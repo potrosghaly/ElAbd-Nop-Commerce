@@ -14,7 +14,9 @@ public class HomePage extends MethodHandles {
         super(driver);
     }
 
+    //Mega White Cheese Croissant 474 product
     String productID = "474";
+    //bakery category
     String categorySort = "2";
 
     // before login
@@ -28,6 +30,7 @@ public class HomePage extends MethodHandles {
     private final By adminPage = By.xpath("//*[@class='administration']");
     private final By location = By.xpath("//*[contains(text() , 'وسط البلد')]");
     private final By autoLocation = By.xpath("//*[contains(text() , 'Auto Location')]");
+    private final By closePopup = By.xpath("//button[@class='popup-close']");
 
 
 
@@ -127,7 +130,12 @@ public class HomePage extends MethodHandles {
         return isDisplayed(phoneNumberField , 30);
     }
 
-
+    public void closePopup() {
+        while (!driver.findElements(closePopup).isEmpty()) {
+            click(closePopup, 30);
+            invisibilityOf(closePopup, 30);
+        }
+    }
 
 
 

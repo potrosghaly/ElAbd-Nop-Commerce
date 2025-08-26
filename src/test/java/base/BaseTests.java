@@ -57,7 +57,7 @@ public class BaseTests {
     @BeforeMethod
     public void goHome(Method method) throws Exception {
         ScreenRecorderUtil.startRecord(method.getName());
-        driver.get(dataModel().URL);
+        driver.get(dataModel().devURL);
         utilsTests = new UtilsTests(driver);
         utilsTests.createTestCaseInReport(method);
 
@@ -92,5 +92,12 @@ public class BaseTests {
         driver.quit();
     }
 
+    public void sleepPerSeconds(int seconds) throws InterruptedException {
+        Thread.sleep(1000L * seconds);
+    }
+
+    public void sleepPerMinutes(int minutes) throws InterruptedException {
+        Thread.sleep(1000L * minutes * 60);
+    }
 
 }

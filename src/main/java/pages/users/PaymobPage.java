@@ -15,38 +15,61 @@ public class PaymobPage extends MethodHandles {
     private final By cardCvc = By.id("cvc");
     private final By cardName = By.id("name");
     private final By payButton = By.id("pay-button");
-    private final By paymobfram  = By.id("iframe");
-    private final By welcome  = By.id("welcome");
+    private final By paymobfram = By.id("iframe");
+    private final By welcome = By.id("welcome");
     private final By submitButton = By.id("acssubmit");
     private final By successMessage = By.cssSelector("div[class='title'] h1 strong");
+    private final By authenticationDropdown = By.id("selectAuthResult");
+    private final By tryAgainButton = By.tagName("button");
+    private final By faildPopup = By.xpath("//p[@class='content']");
 
 
 
-    public void fillPaymobForm(String number , String expiry , String cvc , String name)
-    {
-        sendKeys(cardNumber , number , 50);
-        sendKeys(cardExpiry , expiry , 10);
-        sendKeys(cardCvc , cvc , 10);
-        sendKeys(cardName , name , 10);
+
+    public void fillPaymobForm(String number, String expiry, String cvc, String name) {
+        visiblityOfElement(cardNumber , 30);
+        sendKeys(cardNumber, number, 50);
+        sendKeys(cardExpiry, expiry, 10);
+        sendKeys(cardCvc, cvc, 10);
+        sendKeys(cardName, name, 10);
     }
-    public void clickPayButton()
-    {
-        click(payButton , 5);
+
+    public void clickPayButton() {
+        click(payButton, 5);
     }
-    public void clicksumbitButton()
-    {
-        visiblityOfElement(paymobfram , 20);
+
+    public void clicksumbitButton() {
+        visiblityOfElement(paymobfram, 20);
         switchToFrame("iframe");
-        visiblityOfElement(welcome , 20);
-        click(submitButton , 30);
+        visiblityOfElement(welcome, 20);
+        click(submitButton, 30);
         switchToParent();
-        waitForUrlcontain("/checkout/completed/", 30);
     }
-    public boolean thankYouMessage()
-    {
+
+    public boolean thankYouMessage() {
+        waitForUrlcontain("/checkout/completed/", 30);
         return isDisplayed(successMessage, 30);
     }
+    public boolean faildMessage() {
+        waitForUrlcontain("failed=True", 100);
+        return isDisplayed(faildPopup, 30);
+    }
 
+    public void selectAuthenticationInvalid()
+    {
+        visiblityOfElement(paymobfram, 20);
+        switchToFrame("iframe");
+        visiblityOfElement(authenticationDropdown , 30);
+        selectByValue(authenticationDropdown , 30 , "UNAUTHENTICATED");
+        switchToParent();
+
+    }
+
+    public void clickTryAgain()
+    {
+        visiblityOfElement(tryAgainButton , 30);
+        click(tryAgainButton , 30);
+    }
 
 
 

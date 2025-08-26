@@ -2,7 +2,8 @@ package data;
 
 public class DataModel {
 
-    public String URL;
+    public String devURL;
+    public String stagingURL;
     public String phone;
     public String customerPhone;
     public String password;

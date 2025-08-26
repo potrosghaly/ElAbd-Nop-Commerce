@@ -64,7 +64,7 @@ public class OrderDetailsPage extends MethodHandles {
 
     public boolean cancelStatusIsAppear() {
         driver.navigate().refresh();
-        return isDisplayed(cancelStatus, 30);
+        return isDisplayed(cancelStatus, 100);
     }
     public boolean authorizedStatusIsAppear() {
         return isDisplayed(authorizedStatus, 30);

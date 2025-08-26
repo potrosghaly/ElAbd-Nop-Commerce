@@ -10,9 +10,7 @@
             <class name="callCenter.TryAddCurrentUserAtCustomerServiceTest"> </class>
             <class name="callCenter.CreateOrderByCallCenterTest"> </class>
             <class name="callCenter.CreateOrderByTalalbatVisaTest"> </class>
-            <class name="createOrders.UncompletedOnlinePaymentTest"> </class>
             <class name="callCenter.CreateOrederWithNewCutomerTest"> </class>
-
         </classes>
     </test>
 </suite>

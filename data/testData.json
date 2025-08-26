@@ -1,5 +1,6 @@
 {
-  "URL": "https://online-store-dotnet5.azurewebsites.net/home",
+  "devURL": "https://online-store-dotnet5-prod-staging.azurewebsites.net/home",
+  "stagingURL": "https://online-store-dotnet5.azurewebsites.net/home",
   "phone": "01271331374",
   "customerPhone" : "01064610399",
   "password" : "123123123",

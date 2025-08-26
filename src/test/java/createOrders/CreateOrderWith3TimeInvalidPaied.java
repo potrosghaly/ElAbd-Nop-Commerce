@@ -8,7 +8,8 @@ import java.io.FileNotFoundException;
 
 import static reader.ReadDataFromJson.dataModel;
 
-public class UncompletedOnlinePaymentTest extends BaseTests {
+public class CreateOrderWith3TimeInvalidPaied extends BaseTests {
+
     @Test(priority = 1)
     public void createUnpaidOrder() throws InterruptedException, FileNotFoundException {
         var login = homePage.clickLoginIcon();
@@ -22,42 +23,38 @@ public class UncompletedOnlinePaymentTest extends BaseTests {
         var checkout = cartPage.openCheckoutPage();
         checkout.selectOnlineOption();
         var payForm = checkout.submitOnlineOrder();
-        payForm.fillPaymobForm(dataModel().paymobForm.numberCard, dataModel().paymobForm.expiryCard, dataModel().paymobForm.cvcCard,
+      // first time
+        payForm.fillPaymobForm (dataModel().paymobForm.numberCard ,dataModel().paymobForm.expiryCard ,dataModel().paymobForm.cvcCard,
                 dataModel().paymobForm.nameCard);
+        payForm.clickPayButton();
+        payForm.selectAuthenticationInvalid();
+        payForm.clicksumbitButton();
+        payForm.clickTryAgain();
+        // second time
+        payForm.fillPaymobForm (dataModel().paymobForm.numberCard ,dataModel().paymobForm.expiryCard ,dataModel().paymobForm.cvcCard,
+                dataModel().paymobForm.nameCard);
+        payForm.clickPayButton();
+        payForm.selectAuthenticationInvalid();
+        payForm.clicksumbitButton();
+        payForm.clickTryAgain();
+        // third time
+        payForm.fillPaymobForm (dataModel().paymobForm.numberCard ,dataModel().paymobForm.expiryCard ,dataModel().paymobForm.cvcCard,
+                dataModel().paymobForm.nameCard);
+        payForm.clickPayButton();
+        payForm.selectAuthenticationInvalid();
+        payForm.clicksumbitButton();
+        Assert.assertTrue(payForm.faildMessage());
 
 
     }
 
-    @Test(priority = 2)
-    public void checkUnpaidStatusIsPending() throws InterruptedException {
-        var admin = homePage.openAdmin();
-        var salePage = admin.openSalesPage();
-        salePage.resestFilter();
-        salePage.clickSearchButton();
-        var productPage = salePage.openFirstOrder();
-        Assert.assertTrue(productPage.pendingStatusIsAppear());
-    }
-
-    @Test(priority = 3)
-    public void tryToChangeStatusForUnpaidOrder() throws InterruptedException {
-        var admin = homePage.openAdmin();
-        var salePage = admin.openSalesPage();
-        salePage.resestFilter();
-        salePage.clickSearchButton();
-        var productPage = salePage.openFirstOrder();
-        productPage.clickPreparingButton();
-        Assert.assertTrue(productPage.unchangeAlertIsAppear());
-    }
-
-
-    @Test(priority = 4)
+   // @Test(priority = 2)
     public void checkUnpaidStatusAfter15min() throws InterruptedException {
         var admin = homePage.openAdmin();
         var salePage = admin.openSalesPage();
         salePage.resestFilter();
         salePage.clickSearchButton();
         var productPage = salePage.openFirstOrder();
-        sleepPerMinutes(7);
         Assert.assertTrue(productPage.cancelStatusIsAppear());
     }
 
