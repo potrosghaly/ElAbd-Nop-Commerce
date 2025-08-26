@@ -60,7 +60,6 @@ public class BaseTests {
         driver.get(dataModel().devURL);
         utilsTests = new UtilsTests(driver);
         utilsTests.createTestCaseInReport(method);
-
     }
 
     @AfterMethod
