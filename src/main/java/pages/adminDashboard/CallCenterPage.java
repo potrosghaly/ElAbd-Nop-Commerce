@@ -81,14 +81,14 @@ public class CallCenterPage extends MethodHandles {
         invisibilityOf(loadingIcon, 30);
     }
 
-    public void addNewUser(String phoneNo, String name, String build, String floor, String apartment ,String shoubra) {
+    public void addNewUser(String phoneNo, String name, String build, String floor, String apartment, String shoubra) {
         click(addNewUser, 30);
         sendKeys(addPhoneNumberField, phoneNo, 30);
         sendKeys(addCustomerNameField, name, 30);
-        visiblityOfElement(searchAtMapField , 30);
-        sendKeys(searchAtMapField, shoubra , 30);
+        visiblityOfElement(searchAtMapField, 30);
+        sendKeys(searchAtMapField, shoubra, 30);
         enter();
-        elemnebtNotEmpty(addAddressField , 30);
+        elemnebtNotEmpty(addAddressField, 30);
         sendKeys(addBuildNumberField, build, 30);
         sendKeys(addFloorNumberField, floor, 30);
         sendKeys(addApartmentNumberField, apartment, 30);
@@ -103,10 +103,12 @@ public class CallCenterPage extends MethodHandles {
     public boolean existingAlertIsAppear() {
         visiblityOfElement(isAlreadyExisting, 30);
         return isDisplayed(isAlreadyExisting, 30);
-    };
-    public void selectHub()
-    {
-        selectByValue(hubDropdoun , 30 , "10");
+    }
+
+    ;
+
+    public void selectHub() {
+        selectByValue(hubDropdoun, 30, "10");
     }
 
 
