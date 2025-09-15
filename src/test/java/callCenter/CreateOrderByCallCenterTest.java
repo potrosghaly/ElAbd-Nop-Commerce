@@ -26,7 +26,7 @@ public class CreateOrderByCallCenterTest extends BaseTests {
         callCenter.selectCategory();
         callCenter.addProductToCart();
         callCenter.submitOrder();
-        callCenter.cleanCart();
+        //callCenter.cleanCart();
         Assert.assertTrue(callCenter.successOrderAlertIsAppear());
 
         var salePage = admin.openSalesPage();
@@ -53,7 +53,7 @@ public class CreateOrderByCallCenterTest extends BaseTests {
         callCenter.selectCategory();
         callCenter.addProductToCart();
         callCenter.submitOrder();
-        callCenter.cleanCart();
+        //callCenter.cleanCart();
         Assert.assertTrue(callCenter.successOrderAlertIsAppear());
 
         var salePage = admin.openSalesPage();

@@ -22,6 +22,7 @@ public class OrderDetailsPage extends MethodHandles {
     private final By paidStatus = By.xpath("//div[contains(text(),'Paid')]");
     private final By pendingStatus = By.xpath("//div[contains(text(),'Pending')]");
     private final By cancelStatus = By.xpath("//*[contains(text(),'Cancelled')]");
+    private final By autoCancelReason = By.xpath("//div[@class='form-text-row'][normalize-space()='Auto-cancel due to payment failure or unpaid transaction.']");
     private final By authorizedStatus = By.xpath("//div[contains(text(),'Authorized')]");
     private final By unchangedAlertUnpaidOrder = By.cssSelector(".alert.alert-danger.alert-dismissable");
 
@@ -65,6 +66,9 @@ public class OrderDetailsPage extends MethodHandles {
     public boolean cancelStatusIsAppear() {
         driver.navigate().refresh();
         return isDisplayed(cancelStatus, 100);
+    }
+    public boolean autoCancelReasonIsAppear() {
+        return isDisplayed(autoCancelReason, 100);
     }
     public boolean authorizedStatusIsAppear() {
         return isDisplayed(authorizedStatus, 30);

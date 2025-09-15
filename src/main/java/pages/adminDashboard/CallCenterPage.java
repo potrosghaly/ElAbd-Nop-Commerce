@@ -38,6 +38,7 @@ public class CallCenterPage extends MethodHandles {
     private final By hubDropdoun = By.id("WarehouseId");
     private final By saveButton = By.id("saveButton");
     private final By isAlreadyExisting = By.xpath("//li[contains(text(),'رقم الموبايل تم تسجيله من قبل')]");
+    private final By searchAtMapField = By.xpath("//input[@class='pac-target-input custom-search-box']");
 
 
     public void searchByPhoneNumber(String phone) {
@@ -80,15 +81,18 @@ public class CallCenterPage extends MethodHandles {
         invisibilityOf(loadingIcon, 30);
     }
 
-    public void addNewUser(String phoneNo, String name, String address, String build, String floor, String apartment) {
+    public void addNewUser(String phoneNo, String name, String build, String floor, String apartment ,String shoubra) {
         click(addNewUser, 30);
         sendKeys(addPhoneNumberField, phoneNo, 30);
         sendKeys(addCustomerNameField, name, 30);
-        selectHub();
-        sendKeys(addAddressField, address, 30);
+        visiblityOfElement(searchAtMapField , 30);
+        sendKeys(searchAtMapField, shoubra , 30);
+        enter();
+        elemnebtNotEmpty(addAddressField , 30);
         sendKeys(addBuildNumberField, build, 30);
         sendKeys(addFloorNumberField, floor, 30);
         sendKeys(addApartmentNumberField, apartment, 30);
+
     }
 
     public void clickSaveFormButton() {

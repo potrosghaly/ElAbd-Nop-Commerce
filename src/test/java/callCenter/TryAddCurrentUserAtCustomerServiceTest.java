@@ -22,8 +22,8 @@ public class TryAddCurrentUserAtCustomerServiceTest extends BaseTests {
 
         // open call center and create order
         var callCenter = admin.openCallCenterPage();
-        callCenter.addNewUser(callCenterData.phoneNumber, callCenterData.name, callCenterData.address,
-                callCenterData.build, callCenterData.floor, callCenterData.appartment);
+        callCenter.addNewUser(callCenterData.phoneNumber, callCenterData.name,
+                callCenterData.build, callCenterData.floor, callCenterData.appartment , callCenterData.address);
         callCenter.clickSaveFormButton();
         Assert.assertTrue(callCenter.existingAlertIsAppear());
     }

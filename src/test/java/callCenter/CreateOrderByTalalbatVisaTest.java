@@ -26,7 +26,7 @@ public class CreateOrderByTalalbatVisaTest extends BaseTests {
         callCenter.addProductToCart();
         callCenter.selectTalabatType();
         callCenter.submitOrder();
-        callCenter.cleanCart();
+        //callCenter.cleanCart();
         Assert.assertTrue(callCenter.successOrderAlertIsAppear());
 
         var salePage = admin.openSalesPage();
@@ -52,7 +52,7 @@ public class CreateOrderByTalalbatVisaTest extends BaseTests {
         callCenter.addProductToCart();
         callCenter.selectTalabatType();
         callCenter.submitOrder();
-        callCenter.cleanCart();
+        //callCenter.cleanCart();
         Assert.assertTrue(callCenter.successOrderAlertIsAppear());
 
         var salePage = admin.openSalesPage();

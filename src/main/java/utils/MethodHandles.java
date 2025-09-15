@@ -9,6 +9,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
 import java.time.Duration;
 
 import static org.testng.Assert.assertEquals;
@@ -51,16 +52,21 @@ public class MethodHandles {
         js.executeScript("arguments[0].style.border = '7px solid red'", element);
     }
 
-    protected void visiblityOfElement(By locator , int time)
-    {
+    protected void visiblityOfElement(By locator, int time) {
         wait = new WebDriverWait(driver, Duration.ofSeconds(time));
         wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+    }
+
+    protected void elemnebtNotEmpty(By locator, int time) {
+        wait = new WebDriverWait(driver, java.time.Duration.ofSeconds(time));
+        wait.until(ExpectedConditions.not(ExpectedConditions.attributeToBe(locator, "value", "")));
     }
 
     public void waitForUrlToBe(String expectedUrl, int timeoutInSeconds) {
         WebDriverWait wait = new WebDriverWait(driver, java.time.Duration.ofSeconds(timeoutInSeconds));
         wait.until(ExpectedConditions.urlToBe(expectedUrl));
     }
+
     public void waitForUrlcontain(String partialUrl, int timeoutInSeconds) {
         WebDriverWait wait = new WebDriverWait(driver, java.time.Duration.ofSeconds(timeoutInSeconds));
         wait.until(ExpectedConditions.urlContains(partialUrl));
@@ -150,6 +156,18 @@ public class MethodHandles {
                 setSteps();
                 addBorderToElement(driver, webElement(locator));
                 webElement(locator).submit();
+                break;
+            } catch (StaleElementReferenceException e) {
+
+            }
+        }
+    }
+
+    protected void enter() {
+        for (int i = 0; i < 5; i++) {
+            try {
+                Actions actions = new Actions(driver);
+                actions.sendKeys(Keys.ENTER).perform();
                 break;
             } catch (StaleElementReferenceException e) {
 
@@ -367,6 +385,7 @@ public class MethodHandles {
             }
         }
     }
+
     protected void clickAndHold(By locator, int time) {
         actions = new Actions(driver);
         for (int i = 0; i < 5; i++) {
@@ -381,8 +400,8 @@ public class MethodHandles {
             }
         }
     }
-    protected void hover(By target, int time)
-    {
+
+    protected void hover(By target, int time) {
         actions = new Actions(driver);
         actions.moveToElement(driver.findElement(target)).perform();
     }

@@ -15,7 +15,8 @@ public class HomePage extends MethodHandles {
     }
 
     //Mega White Cheese Croissant 474 product
-    String productID = "474";
+    String productID = "1";
+
     //bakery category
     String categorySort = "2";
 
@@ -57,6 +58,7 @@ public class HomePage extends MethodHandles {
     private final By addToCartButtonLocator = By.cssSelector(".button-2.product-box-add-to-cart-button");
 
     private final By productLocator = By.xpath("//div[@data-productid='" + productID + "']");
+    private final By productLocatorAsGuest = By.xpath("//div[@data-productid] [1]");
 
     private final By cartIcon = By.id("flyout-cart");
     private final By viewYourCart = By.id("view-cart-button");
@@ -66,6 +68,14 @@ public class HomePage extends MethodHandles {
 
         visiblityOfElement(productLocator, 15);
         WebElement productElement = driver.findElement(productLocator);
+        WebElement addToCartButton = productElement.findElement(addToCartButtonLocator);
+        addToCartButton.click();
+        invisibilityOf(loadingIcon, 10);
+    }
+public void addProductToCartAsGuest() {
+
+        visiblityOfElement(productLocatorAsGuest, 15);
+        WebElement productElement = driver.findElement(productLocatorAsGuest);
         WebElement addToCartButton = productElement.findElement(addToCartButtonLocator);
         addToCartButton.click();
         invisibilityOf(loadingIcon, 10);

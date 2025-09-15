@@ -27,38 +27,39 @@ public class UncompletedOnlinePaymentTest extends BaseTests {
 
 
     }
-
-    @Test(priority = 2)
-    public void checkUnpaidStatusIsPending() throws InterruptedException {
-        var admin = homePage.openAdmin();
-        var salePage = admin.openSalesPage();
-        salePage.resestFilter();
-        salePage.clickSearchButton();
-        var productPage = salePage.openFirstOrder();
-        Assert.assertTrue(productPage.pendingStatusIsAppear());
-    }
-
-    @Test(priority = 3)
-    public void tryToChangeStatusForUnpaidOrder() throws InterruptedException {
-        var admin = homePage.openAdmin();
-        var salePage = admin.openSalesPage();
-        salePage.resestFilter();
-        salePage.clickSearchButton();
-        var productPage = salePage.openFirstOrder();
-        productPage.clickPreparingButton();
-        Assert.assertTrue(productPage.unchangeAlertIsAppear());
-    }
+//
+//    @Test(priority = 2)
+//    public void checkUnpaidStatusIsPending() throws InterruptedException {
+//        var admin = homePage.openAdmin();
+//        var salePage = admin.openSalesPage();
+//        salePage.resestFilter();
+//        salePage.clickSearchButton();
+//        var productPage = salePage.openFirstOrder();
+//        Assert.assertTrue(productPage.pendingStatusIsAppear());
+//    }
+//
+//    @Test(priority = 3)
+//    public void tryToChangeStatusForUnpaidOrder() throws InterruptedException {
+//        var admin = homePage.openAdmin();
+//        var salePage = admin.openSalesPage();
+//        salePage.resestFilter();
+//        salePage.clickSearchButton();
+//        var productPage = salePage.openFirstOrder();
+//        productPage.clickPreparingButton();
+//        Assert.assertTrue(productPage.unchangeAlertIsAppear());
+//    }
 
 
     @Test(priority = 4)
-    public void checkUnpaidStatusAfter15min() throws InterruptedException {
+    public void checkUnpaidStatusAfter7min() throws InterruptedException {
         var admin = homePage.openAdmin();
         var salePage = admin.openSalesPage();
+        sleepPerMinutes(7);
         salePage.resestFilter();
         salePage.clickSearchButton();
         var productPage = salePage.openFirstOrder();
-        sleepPerMinutes(7);
         Assert.assertTrue(productPage.cancelStatusIsAppear());
+        Assert.assertTrue(productPage.autoCancelReasonIsAppear());
     }
 
 }

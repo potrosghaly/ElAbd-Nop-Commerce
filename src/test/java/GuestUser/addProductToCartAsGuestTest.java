@@ -19,7 +19,7 @@ public class addProductToCartAsGuestTest extends BaseTests {
         var homePage = login.clickLogin();
         homePage.clickLogout();
         homePage.openCategoryPage();
-        homePage.addProductToCart();
+        homePage.addProductToCartAsGuest();
         Assert.assertTrue(homePage.checkIfPopupAppear());
         homePage.clickContinueAsGuest();
         Assert.assertTrue(homePage.mapIsAppear());
@@ -34,7 +34,7 @@ public class addProductToCartAsGuestTest extends BaseTests {
 //        var homePage = login.clickLogin();
 //        homePage.clickLogout();
         homePage.openCategoryPage();
-        homePage.addProductToCart();
+        homePage.addProductToCartAsGuest();
         Assert.assertTrue(homePage.checkIfPopupAppear());
         homePage.clickLoginFromPopup();
         Assert.assertTrue(homePage.loginPageIsAppear());
