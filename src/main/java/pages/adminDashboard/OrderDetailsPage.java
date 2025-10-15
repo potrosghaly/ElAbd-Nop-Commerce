@@ -25,6 +25,8 @@ public class OrderDetailsPage extends MethodHandles {
     private final By autoCancelReason = By.xpath("//div[@class='form-text-row'][normalize-space()='Auto-cancel due to payment failure or unpaid transaction.']");
     private final By authorizedStatus = By.xpath("//div[contains(text(),'Authorized')]");
     private final By unchangedAlertUnpaidOrder = By.cssSelector(".alert.alert-danger.alert-dismissable");
+    private final By merchantReferenceNumber = By.xpath("//div[@id='order-info']//div[1]//div[1]//div[8]//div[2]");
+    private final By paymobDashboardButton = By.xpath("//p[normalize-space()='Paymob Transactions']");
 
 
     public void clickPreparingButton() {
@@ -76,6 +78,22 @@ public class OrderDetailsPage extends MethodHandles {
     public boolean unchangeAlertIsAppear() {
         return isDisplayed(unchangedAlertUnpaidOrder, 30);
     }
+    public String getMerchantNumber()
+    {
+        return getText(merchantReferenceNumber , 30);
+    }
+
+    public PaymobDashboardPage openpaymobPage()
+    {
+        hover(paymobDashboardButton , 30);
+        click(paymobDashboardButton , 30);
+        invisibilityOf(loadingIcon , 30);
+        return new PaymobDashboardPage(driver);
+    }
+
+
+
+
 
 
 }

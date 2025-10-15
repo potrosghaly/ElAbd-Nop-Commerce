@@ -1,5 +1,6 @@
 package base;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -12,12 +13,12 @@ import utils.ScreenRecorderUtil;
 import utils.UtilsTests;
 
 import java.lang.reflect.Method;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 
 import static reader.ReadDataFromJson.dataModel;
 
 public class BaseTests {
-    //dataModel().URL
 
     WebDriver driver;
     protected HomePage homePage;
@@ -57,10 +58,12 @@ public class BaseTests {
     @BeforeMethod
     public void goHome(Method method) throws Exception {
         ScreenRecorderUtil.startRecord(method.getName());
-        driver.get(dataModel().devURL);
+        driver.get(dataModel().stagingURL);
         utilsTests = new UtilsTests(driver);
         utilsTests.createTestCaseInReport(method);
+
     }
+
 
     @AfterMethod
     public void afterMethod(Method method, ITestResult result) throws Exception {
@@ -91,6 +94,10 @@ public class BaseTests {
         driver.quit();
     }
 
+    public void closeTab() {
+        driver.close();
+    }
+
     public void sleepPerSeconds(int seconds) throws InterruptedException {
         Thread.sleep(1000L * seconds);
     }
@@ -98,5 +105,27 @@ public class BaseTests {
     public void sleepPerMinutes(int minutes) throws InterruptedException {
         Thread.sleep(1000L * minutes * 60);
     }
+
+    public void goHomePage() throws Exception {
+        driver.get(dataModel().stagingURL);
+    }
+
+
+    public String saveTab() {
+        return driver.getWindowHandle();
+    }
+
+    public void openNewTab() {
+        ((JavascriptExecutor) driver).executeScript("window.open();");
+        List<String> tabs = new ArrayList<>(driver.getWindowHandles());
+        driver.switchTo().window(tabs.get(1));
+    }
+    public void backToTab(String tabName) {
+        driver.switchTo().window(tabName);
+    }
+    public void refreshPage() {
+        driver.navigate().refresh();
+    }
+
 
 }

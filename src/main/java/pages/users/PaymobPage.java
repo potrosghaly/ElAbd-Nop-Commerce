@@ -2,7 +2,6 @@ package pages.users;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import utils.MethodHandles;
 
 public class PaymobPage extends MethodHandles {
@@ -21,7 +20,7 @@ public class PaymobPage extends MethodHandles {
     private final By successMessage = By.cssSelector("div[class='title'] h1 strong");
     private final By authenticationDropdown = By.id("selectAuthResult");
     private final By tryAgainButton = By.tagName("button");
-    private final By faildPopup = By.xpath("//p[@class='content']");
+    private final By failMessage = By.xpath("//strong[normalize-space()='Payment failed. Your order has been cancelled.']");
 
 
 
@@ -52,7 +51,7 @@ public class PaymobPage extends MethodHandles {
     }
     public boolean faildMessage() {
         waitForUrlcontain("failed=True", 100);
-        return isDisplayed(faildPopup, 30);
+        return isDisplayed(failMessage, 30);
     }
 
     public void selectAuthenticationInvalid()
@@ -72,5 +71,10 @@ public class PaymobPage extends MethodHandles {
     }
 
 
+    public static class SearchPage extends MethodHandles {
+        public SearchPage(WebDriver driver) {
+            super(driver);
 
+        }
+    }
 }

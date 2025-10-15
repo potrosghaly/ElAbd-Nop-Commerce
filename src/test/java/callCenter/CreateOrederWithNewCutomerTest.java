@@ -36,11 +36,11 @@ public class CreateOrederWithNewCutomerTest extends BaseTests {
     public void createOrderToNewUser() throws FileNotFoundException {
         var callCenterData = dataModel().callCenterUserForm;
 
-        var login = homePage.clickLoginIcon();
-        login.writePhoneNumber(dataModel().phone);
-        login.clickSendOtpButton();
-        login.writePassword(dataModel().password);
-        var homePage = login.clickLogin();
+//        var login = homePage.clickLoginIcon();
+//        login.writePhoneNumber(dataModel().phone);
+//        login.clickSendOtpButton();
+//        login.writePassword(dataModel().password);
+//        var homePage = login.clickLogin();
 
         var admin = homePage.openAdmin();
         var callCenter = admin.openCallCenterPage();

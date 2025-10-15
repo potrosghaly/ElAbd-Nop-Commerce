@@ -8,5 +8,4 @@ public class callCenterUserForm {
     public String floor;
     public String appartment;
 
-
 }

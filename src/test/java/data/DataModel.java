@@ -10,6 +10,7 @@ public class DataModel {
 
     public paymobForm paymobForm;
     public callCenterUserForm callCenterUserForm;
+    public  liveData liveData;
 
 
 }

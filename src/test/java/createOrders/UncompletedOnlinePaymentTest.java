@@ -1,7 +1,6 @@
 package createOrders;
 
 import base.BaseTests;
-import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.io.FileNotFoundException;
@@ -16,6 +15,7 @@ public class UncompletedOnlinePaymentTest extends BaseTests {
         login.clickSendOtpButton();
         login.writePassword(dataModel().password);
         var homePage = login.clickLogin();
+        homePage.checkLocation();
         homePage.openCategoryPage();
         homePage.addProductToCart();
         var cartPage = homePage.openCartPage();
@@ -24,8 +24,6 @@ public class UncompletedOnlinePaymentTest extends BaseTests {
         var payForm = checkout.submitOnlineOrder();
         payForm.fillPaymobForm(dataModel().paymobForm.numberCard, dataModel().paymobForm.expiryCard, dataModel().paymobForm.cvcCard,
                 dataModel().paymobForm.nameCard);
-
-
     }
 //
 //    @Test(priority = 2)
@@ -50,16 +48,16 @@ public class UncompletedOnlinePaymentTest extends BaseTests {
 //    }
 
 
-    @Test(priority = 4)
-    public void checkUnpaidStatusAfter7min() throws InterruptedException {
-        var admin = homePage.openAdmin();
-        var salePage = admin.openSalesPage();
-        sleepPerMinutes(7);
-        salePage.resestFilter();
-        salePage.clickSearchButton();
-        var productPage = salePage.openFirstOrder();
-        Assert.assertTrue(productPage.cancelStatusIsAppear());
-        Assert.assertTrue(productPage.autoCancelReasonIsAppear());
-    }
+//    @Test(priority = 4)
+//    public void checkUnpaidStatusAfter7min() throws InterruptedException {
+//        var admin = homePage.openAdmin();
+//        var salePage = admin.openSalesPage();
+//        sleepPerMinutes(7);
+//        salePage.resestFilter();
+//        salePage.clickSearchButton();
+//        var productPage = salePage.openFirstOrder();
+//        Assert.assertTrue(productPage.cancelStatusIsAppear());
+//        Assert.assertTrue(productPage.autoCancelReasonIsAppear());
+//    }
 
 }

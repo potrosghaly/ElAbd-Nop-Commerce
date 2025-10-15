@@ -11,11 +11,15 @@ public class CustomerPage extends MethodHandles {
 
     private final By loadingIcon = By.xpath("//div[@id='ajaxBusy']//span");
     private final By searchPhoneField = By.id("SearchPhone");
+    private final By resetFilterButton = By.cssSelector("a[class='btn btn-secondary']");
+
+
     private final By searchButton = By.id("search-customers");
     private final By viewCustomerButton = By.xpath("//a[@class='btn btn-default']");
 
 
     public void searchByCustomerPhone(String phone) {
+        click(resetFilterButton, 30);
         sendKeys(searchPhoneField, phone, 30);
         click(searchButton, 30);
         invisibilityOf(loadingIcon, 30);

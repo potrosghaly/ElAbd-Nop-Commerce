@@ -11,7 +11,7 @@ import static reader.ReadDataFromJson.dataModel;
 public class addProductToCartAsGuestTest extends BaseTests {
 
     @Test(priority = 1)
-    public void tryAddToCartAsGuestThenOpenMap() throws FileNotFoundException {
+    public void tryAddToCartAsGuestThenOpenMap() throws FileNotFoundException, InterruptedException {
         var login = homePage.clickLoginIcon();
         login.writePhoneNumber(dataModel().phone);
         login.clickSendOtpButton();
@@ -23,6 +23,7 @@ public class addProductToCartAsGuestTest extends BaseTests {
         Assert.assertTrue(homePage.checkIfPopupAppear());
         homePage.clickContinueAsGuest();
         Assert.assertTrue(homePage.mapIsAppear());
+
     }
 
     @Test(priority = 2)

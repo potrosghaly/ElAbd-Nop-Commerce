@@ -37,8 +37,10 @@ public class LoginPage extends MethodHandles {
     }
 
     public HomePage clickLogin() {
+        visiblityOfElement(logButton, 20);
         click(logButton, 30);
         return new HomePage(driver);
+
     }
 
 

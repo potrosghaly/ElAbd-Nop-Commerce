@@ -10,20 +10,24 @@ import static reader.ReadDataFromJson.dataModel;
 
 public class CreateOnlinePaymentTest extends BaseTests {
 
-    @Test (priority = 1)
+    String merchantNumber = "";
+
+
+    @Test(priority = 1)
     public void createOnlineOrderAsDelivered() throws InterruptedException, FileNotFoundException {
         var login = homePage.clickLoginIcon();
         login.writePhoneNumber(dataModel().phone);
         login.clickSendOtpButton();
         login.writePassword(dataModel().password);
         var homePage = login.clickLogin();
+        homePage.checkLocation();
         homePage.openCategoryPage();
         homePage.addProductToCart();
         var cartPage = homePage.openCartPage();
         var checkout = cartPage.openCheckoutPage();
         checkout.selectOnlineOption();
         var payForm = checkout.submitOnlineOrder();
-        payForm.fillPaymobForm (dataModel().paymobForm.numberCard ,dataModel().paymobForm.expiryCard ,dataModel().paymobForm.cvcCard,
+        payForm.fillPaymobForm(dataModel().paymobForm.numberCard, dataModel().paymobForm.expiryCard, dataModel().paymobForm.cvcCard,
                 dataModel().paymobForm.nameCard);
         payForm.clickPayButton();
         payForm.clicksumbitButton();
@@ -39,9 +43,18 @@ public class CreateOnlinePaymentTest extends BaseTests {
         productPage.clickOnWayButton();
         productPage.clickDeliveredButton();
         Assert.assertTrue(productPage.paidStatusIsAppear());
+
+        merchantNumber = productPage.getMerchantNumber();
+        var paymob = productPage.openpaymobPage();
+        //paymob.clickRestButton();
+        paymob.filterByMerchantNumber(merchantNumber);
+        paymob.clickSearchButton();
+        Assert.assertEquals(paymob.getOrderPaidStatus() , "PAID");
+        Assert.assertEquals(paymob.getTransactionType() , "CAPTURE");
+
     }
 
-   @Test (priority = 2)
+    @Test(priority = 2)
     public void createOnlineOrderAsCancel() throws FileNotFoundException {
 //        var login = homePage.clickLoginIcon();
 //        login.writePhoneNumber(dataModel().phone);
@@ -49,13 +62,14 @@ public class CreateOnlinePaymentTest extends BaseTests {
 //        login.writePassword(dataModel().password);
 //        var homePage = login.clickLogin();
 
+        homePage.checkLocation();
         homePage.openCategoryPage();
         homePage.addProductToCart();
         var cartPage = homePage.openCartPage();
         var checkout = cartPage.openCheckoutPage();
         checkout.selectOnlineOption();
         var payForm = checkout.submitOnlineOrder();
-        payForm.fillPaymobForm (dataModel().paymobForm.numberCard ,dataModel().paymobForm.expiryCard ,dataModel().paymobForm.cvcCard,
+        payForm.fillPaymobForm(dataModel().paymobForm.numberCard, dataModel().paymobForm.expiryCard, dataModel().paymobForm.cvcCard,
                 dataModel().paymobForm.nameCard);
         payForm.clickPayButton();
         payForm.clicksumbitButton();
@@ -69,6 +83,15 @@ public class CreateOnlinePaymentTest extends BaseTests {
         Assert.assertTrue(productPage.authorizedStatusIsAppear());
         productPage.clickCancelButton();
         Assert.assertTrue(productPage.cancelStatusIsAppear());
+
+
+        merchantNumber = productPage.getMerchantNumber();
+//        var paymob = productPage.openpaymobPage();
+//        //paymob.clickRestButton();
+//        paymob.filterByMerchantNumber(merchantNumber);
+//        paymob.clickSearchButton();
+//        Assert.assertEquals(paymob.getOrderPaidStatus() , "PAID");
+//        Assert.assertEquals(paymob.getTransactionType() , "VOID");
 
     }
 

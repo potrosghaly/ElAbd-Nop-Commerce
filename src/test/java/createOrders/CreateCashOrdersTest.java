@@ -19,6 +19,7 @@ public class CreateCashOrdersTest extends BaseTests {
         login.clickSendOtpButton();
         login.writePassword(dataModel().password);
         var homePage = login.clickLogin();
+        homePage.checkLocation();
         homePage.openCategoryPage();
         homePage.addProductToCart();
         var cartPage = homePage.openCartPage();
@@ -43,6 +44,7 @@ public class CreateCashOrdersTest extends BaseTests {
 
     @Test(priority = 2)
     public void createCashOrderAsCancel() throws FileNotFoundException {
+        homePage.checkLocation();
         homePage.openCategoryPage();
         homePage.addProductToCart();
         var cartPage = homePage.openCartPage();

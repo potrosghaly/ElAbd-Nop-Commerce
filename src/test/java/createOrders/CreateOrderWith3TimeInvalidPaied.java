@@ -17,6 +17,7 @@ public class CreateOrderWith3TimeInvalidPaied extends BaseTests {
         login.clickSendOtpButton();
         login.writePassword(dataModel().password);
         var homePage = login.clickLogin();
+        homePage.checkLocation();
         homePage.openCategoryPage();
         homePage.addProductToCart();
         var cartPage = homePage.openCartPage();
@@ -44,18 +45,16 @@ public class CreateOrderWith3TimeInvalidPaied extends BaseTests {
         payForm.selectAuthenticationInvalid();
         payForm.clicksumbitButton();
         Assert.assertTrue(payForm.faildMessage());
-
-
     }
 
    // @Test(priority = 2)
-    public void checkUnpaidStatusAfter15min() throws InterruptedException {
-        var admin = homePage.openAdmin();
-        var salePage = admin.openSalesPage();
-        salePage.resestFilter();
-        salePage.clickSearchButton();
-        var productPage = salePage.openFirstOrder();
-        Assert.assertTrue(productPage.cancelStatusIsAppear());
-    }
+//    public void checkUnpaidStatusAfter15min() throws InterruptedException {
+//        var admin = homePage.openAdmin();
+//        var salePage = admin.openSalesPage();
+//        salePage.resestFilter();
+//        salePage.clickSearchButton();
+//        var productPage = salePage.openFirstOrder();
+//        Assert.assertTrue(productPage.cancelStatusIsAppear());
+//    }
 
 }

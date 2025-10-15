@@ -14,15 +14,17 @@ import java.time.Duration;
 
 import static org.testng.Assert.assertEquals;
 
+
+
 public class MethodHandles {
     protected WebDriver driver;
-
     public static ExtentReports extent;
 
     public static ExtentTest test;
     private WebDriverWait wait;
     Select select;
     protected Actions actions;
+
 
     public MethodHandles(WebDriver driver) {
         this.driver = driver;

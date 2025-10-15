@@ -12,7 +12,7 @@ public class CallCenterPage extends MethodHandles {
 
 
     String categoryId = "37";
-    String productID = "110";
+    String productID = "108";
 
 
     private final By loadingIcon = By.xpath("//div[@id='ajaxBusy']//span");
@@ -20,6 +20,7 @@ public class CallCenterPage extends MethodHandles {
     private final By searchButton = By.cssSelector("button[onclick='SearchACustomer()']");
     private final By categoryIcon = By.xpath("//*[@data-categoryid = '" + categoryId + "' ]");
     private final By productLocator = By.xpath("//div[@data-productid='" + productID + "']");
+//    private final By productLocator = By.xpath("//div[@data-productid] [1]");
     private final By addToCartButtonLocator = By.xpath("//*[@class = 'btn btn-primary add-to-cart addToCart-submit-btn']");
     private final By sumbitOrderButton = By.id("submitOrderBtn");
     private final By updateCartButton = By.id("updateAllBtn");
