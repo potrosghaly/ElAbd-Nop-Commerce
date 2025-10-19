@@ -126,7 +126,6 @@ public class HomePage extends MethodHandles {
         visiblityOfElement(logoutIcon, 30);
         click(logoutIcon, 30);
         click(logoutButton, 30);
-        invisibilityOf(adminLable, 50);
     }
 
     public boolean checkIfPopupAppear() {

@@ -58,7 +58,7 @@ public class BaseTests {
     @BeforeMethod
     public void goHome(Method method) throws Exception {
         ScreenRecorderUtil.startRecord(method.getName());
-        driver.get(dataModel().stagingURL);
+        driver.get(dataModel().newDevURL);
         utilsTests = new UtilsTests(driver);
         utilsTests.createTestCaseInReport(method);
 

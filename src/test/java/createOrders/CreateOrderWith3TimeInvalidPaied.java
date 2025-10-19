@@ -10,8 +10,9 @@ import static reader.ReadDataFromJson.dataModel;
 
 public class CreateOrderWith3TimeInvalidPaied extends BaseTests {
 
+    String  orderID = "";
     @Test(priority = 1)
-    public void createUnpaidOrder() throws InterruptedException, FileNotFoundException {
+    public void createUnpaidOrder3Time() throws InterruptedException, FileNotFoundException {
         var login = homePage.clickLoginIcon();
         login.writePhoneNumber(dataModel().phone);
         login.clickSendOtpButton();
@@ -45,16 +46,19 @@ public class CreateOrderWith3TimeInvalidPaied extends BaseTests {
         payForm.selectAuthenticationInvalid();
         payForm.clicksumbitButton();
         Assert.assertTrue(payForm.faildMessage());
+        String orderURL = payForm.getCurrentURL();
+        orderID = payForm.extractOrderIDFromURL(orderURL);
+        System.out.println(orderID);
     }
 
-   // @Test(priority = 2)
-//    public void checkUnpaidStatusAfter15min() throws InterruptedException {
-//        var admin = homePage.openAdmin();
-//        var salePage = admin.openSalesPage();
-//        salePage.resestFilter();
-//        salePage.clickSearchButton();
-//        var productPage = salePage.openFirstOrder();
-//        Assert.assertTrue(productPage.cancelStatusIsAppear());
-//    }
+    @Test(priority = 2)
+    public void checkUnpaidStatusAfter15min() throws InterruptedException {
+        var admin = homePage.openAdmin();
+        var salePage = admin.openSalesPage();
+        salePage.resestFilter();
+        salePage.searchByOrderID(orderID);
+        Assert.assertTrue(salePage.tableIsEmpty());
+
+    }
 
 }

@@ -4,6 +4,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import utils.MethodHandles;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class PaymobPage extends MethodHandles {
     public PaymobPage(WebDriver driver) {
         super(driver);
@@ -20,7 +23,7 @@ public class PaymobPage extends MethodHandles {
     private final By successMessage = By.cssSelector("div[class='title'] h1 strong");
     private final By authenticationDropdown = By.id("selectAuthResult");
     private final By tryAgainButton = By.tagName("button");
-    private final By failMessage = By.xpath("//strong[normalize-space()='Payment failed. Your order has been cancelled.']");
+    private final By failMessage = By.cssSelector("div[class='section order-completed'] strong");
 
 
 
@@ -76,5 +79,23 @@ public class PaymobPage extends MethodHandles {
             super(driver);
 
         }
+    }
+
+
+    public String extractOrderIDFromURL(String url) {
+        // Define the regular expression pattern to match the number after "/completed/"
+        Pattern pattern = Pattern.compile("/completed/(\\d+)");
+        Matcher matcher = pattern.matcher(url);
+
+        // Extract the order ID if found
+        if (matcher.find()) {
+            return matcher.group(1); // Group 1 contains the captured digits
+        } else {
+            throw new IllegalArgumentException("No order ID found in the URL.");
+        }
+    }
+
+    public String getCurrentURL() {
+        return driver.getCurrentUrl();
     }
 }

@@ -2,8 +2,10 @@ package pages.users;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import pages.HomePage;
 import utils.MethodHandles;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class CheckoutPage extends MethodHandles {
     public CheckoutPage(WebDriver driver) {
@@ -39,10 +41,6 @@ public class CheckoutPage extends MethodHandles {
     public boolean thankYouMessage() {
         return isDisplayed(successMessage, 30);
     }
-
-
-
-
 
 
 
