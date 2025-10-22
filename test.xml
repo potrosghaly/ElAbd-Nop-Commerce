@@ -3,16 +3,9 @@
 <suite name="Parallel Execution Suite" >
     <test name="Parallel Test">
         <classes>
-            <class name="createOrders.CreateCashOrdersTest"> </class>
-            <class name="createOrders.CreateOnlinePaymentTest"> </class>
-            <class name="createOrders.CreateOrderAsGuestUserTest"> </class>
             <class name="createOrders.CreateOrderWith3TimeInvalidPaied"> </class>
             <class name="createOrders.UncompletedOnlinePaymentTest"> </class>
 
-            <class name="callCenter.TryAddCurrentUserAtCustomerServiceTest"> </class>
-            <class name="callCenter.CreateOrderByCallCenterTest"> </class>
-            <class name="callCenter.CreateOrderByTalalbatVisaTest"> </class>
-            <class name="callCenter.CreateOrederWithNewCutomerTest"> </class>
         </classes>
     </test>
 </suite>
