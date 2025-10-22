@@ -59,7 +59,7 @@ public class ProductPage extends MethodHandles {
 
     public void checkStock() {
 
-        By rowLocator = By.xpath("//tr[.//div[contains(text(), '" + hubName + "')]]");
+        By rowLocator = By.xpath("//tr[.//div[contains(text(),'" + hubName + "')]]");
         visiblityOfElement(rowLocator, 20);
         WebElement row = driver.findElement(rowLocator);
 

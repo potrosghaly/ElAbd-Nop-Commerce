@@ -109,8 +109,9 @@ public class HomePage extends MethodHandles {
     public AdminPage openAdmin() {
         visiblityOfElement(adminPage, 50);
         click(adminPage, 5);
-        while (!driver.findElements(loadingIcon).isEmpty()){
-        invisibilityOf(loadingIcon , 30);}
+        while (!driver.findElements(loadingIcon).isEmpty()) {
+            invisibilityOf(loadingIcon, 30);
+        }
         return new AdminPage(driver);
     }
 
