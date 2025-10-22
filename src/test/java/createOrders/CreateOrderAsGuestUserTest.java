@@ -13,7 +13,5 @@ public class CreateOrderAsGuestUserTest extends BaseTests {
         var cartPage = homePage.openCartPage();
         cartPage.tryOpenCheckoutToGuest();
         Assert.assertTrue(cartPage.loginPageIsOpen());
-
-
     }
 }

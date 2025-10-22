@@ -11,7 +11,7 @@ public class ProductPage extends MethodHandles {
         super(driver);
     }
 
-    int numberOfRow = 1;
+    int numberOfRow = 2;
     String hubName = "وسط البلد";
     String totalStockQty = "";
     String totalReservedQTY = "";

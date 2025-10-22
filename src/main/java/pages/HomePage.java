@@ -49,6 +49,12 @@ public class HomePage extends MethodHandles {
         return new LoginPage(driver);
     }
 
+    public LoginPage clickLoginIconWithoutLocation() {
+
+        click(loginIcon, 5);
+        return new LoginPage(driver);
+    }
+
     public void writeOtp(String otp) {
         sendKeys(otpField, otp, 5);
     }
@@ -157,13 +163,12 @@ public class HomePage extends MethodHandles {
         }
     }
 
-    public void searchByProductName(String productName)
-    {
-        visiblityOfElement(searchIcon , 30);
-        click(searchIcon , 20);
-        visiblityOfElement(searchField , 20);
-        sendKeys(searchField , productName , 30);
-        click(submitSearchIcon , 20);
+    public void searchByProductName(String productName) {
+        visiblityOfElement(searchIcon, 30);
+        click(searchIcon, 20);
+        visiblityOfElement(searchField, 20);
+        sendKeys(searchField, productName, 30);
+        click(submitSearchIcon, 20);
     }
 
     //    ------------------------------------------------------ Change Location
@@ -215,8 +220,7 @@ public class HomePage extends MethodHandles {
         click(openHomePage, 30);
     }
 
-    public TestPage goToTestPage()
-    {
+    public TestPage goToTestPage() {
         return new TestPage(driver);
     }
 
