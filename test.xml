@@ -3,9 +3,8 @@
 <suite name="Parallel Execution Suite" >
     <test name="Parallel Test">
         <classes>
-            <class name="createOrders.CreateOrderWith3TimeInvalidPaied"> </class>
-            <class name="createOrders.UncompletedOnlinePaymentTest"> </class>
-
+            <class name="stocks.TestStock3TimeInvalidPaid"> </class>
+            <class name="stocks.TestStockOnHoldOrders"> </class>
         </classes>
     </test>
 </suite>

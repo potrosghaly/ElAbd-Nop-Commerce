@@ -6,18 +6,19 @@ import org.testng.annotations.Test;
 
 import static reader.ReadDataFromJson.dataModel;
 
-public class cashOnDeliveryDeliverdTestStock extends BaseTests {
+public class TestStockCashonDeliveryCancel extends BaseTests {
 
-
-    @Test
-    public void testStockAfterDeliverdCashOnDelivery() throws Exception {
+    @Test(priority = 2)
+    public void testStockAfterCancelCashOnDelivery() throws Exception {
 
         var login = homePage.clickLoginIcon();
         login.writePhoneNumber(dataModel().phone);
         login.clickSendOtpButton();
         login.writePassword(dataModel().password);
         var homePage = login.clickLogin();
-        //homePage.checkLocation();
+        homePage.checkLocation();
+
+
         var admin = homePage.openAdmin();
         var product = admin.openProductPage();
         product.resetFilter();
@@ -36,7 +37,7 @@ public class cashOnDeliveryDeliverdTestStock extends BaseTests {
         openNewTab();
         goHomePage();
 
-        login = homePage.clickLoginIcon();
+        login = homePage.clickLoginIconWithoutLocation();
         login.writePhoneNumber(dataModel().phone);
         login.clickSendOtpButton();
         login.writePassword(dataModel().password);
@@ -55,6 +56,7 @@ public class cashOnDeliveryDeliverdTestStock extends BaseTests {
         // back to product tab
         backToTab(productTab);
         refreshPage();
+
         product.getStocks();
         int newStock = product.getStock();
         int newReserved = product.getReserved();
@@ -74,10 +76,11 @@ public class cashOnDeliveryDeliverdTestStock extends BaseTests {
         salePage.resestFilter();
         salePage.clickSearchButton();
         var productPage = salePage.openFirstOrder();
-        Assert.assertTrue(productPage.pendingStatusIsAppear());
         productPage.clickPreparingButton();
         productPage.clickOnWayButton();
         productPage.clickDeliveredButton();
+        productPage.markOrderAsPaid();
+        Assert.assertTrue(productPage.paidStatusIsAppear());
 
         // close new tab
         closeTab();
@@ -87,7 +90,7 @@ public class cashOnDeliveryDeliverdTestStock extends BaseTests {
         product.getStocks();
         newStock = product.getStock();
         newReserved = product.getReserved();
-        System.out.println("after order delivered");
+        System.out.println("after order Cancel");
         System.out.println("old StocK = " + oldStock + "-->" + "New StocK = " +newStock);
         System.out.println("old Reserved = " +oldReserved + "-->" +"new Reserved = " +  newReserved);
 
@@ -96,8 +99,5 @@ public class cashOnDeliveryDeliverdTestStock extends BaseTests {
         Assert.assertEquals(oldReserved ,newReserved );
         sleepPerSeconds(3);
     }
-
-
-
 
 }

@@ -5,6 +5,8 @@
         <classes>
             <class name="GuestUser.addProductToCartAsGuestTest"> </class>
 
+
+
             <class name="createOrders.CreateCashOrdersTest"> </class>
             <class name="createOrders.CreateOnlinePaymentTest"> </class>
             <class name="createOrders.CreateOrderAsGuestUserTest"> </class>
@@ -15,6 +17,7 @@
             <class name="callCenter.CreateOrderByCallCenterTest"> </class>
             <class name="callCenter.CreateOrderByTalalbatVisaTest"> </class>
             <class name="callCenter.CreateOrederWithNewCutomerTest"> </class>
+
         </classes>
     </test>
 </suite>

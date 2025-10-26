@@ -6,19 +6,17 @@ import org.testng.annotations.Test;
 
 import static reader.ReadDataFromJson.dataModel;
 
-public class cashonDeliveryCancelTestStock extends BaseTests {
+public class TestStockOnHoldOrders extends BaseTests {
 
-    @Test(priority = 2)
-    public void testStockAfterCancelCashOnDelivery() throws Exception {
+    @Test
+    public void testStockAfterCanceledOnlineOrder() throws Exception {
 
         var login = homePage.clickLoginIcon();
         login.writePhoneNumber(dataModel().phone);
         login.clickSendOtpButton();
         login.writePassword(dataModel().password);
         var homePage = login.clickLogin();
-        homePage.checkLocation();
-
-
+        //homePage.checkLocation();
         var admin = homePage.openAdmin();
         var product = admin.openProductPage();
         product.resetFilter();
@@ -37,7 +35,7 @@ public class cashonDeliveryCancelTestStock extends BaseTests {
         openNewTab();
         goHomePage();
 
-        login = homePage.clickLoginIconWithoutLocation();
+        login = homePage.clickLoginIcon();
         login.writePhoneNumber(dataModel().phone);
         login.clickSendOtpButton();
         login.writePassword(dataModel().password);
@@ -45,12 +43,16 @@ public class cashonDeliveryCancelTestStock extends BaseTests {
 
         homePage.searchByProductName(productName);
         // create order
+
         homePage.addProductToCart();
         var cartPage = homePage.openCartPage();
         var checkout = cartPage.openCheckoutPage();
-        checkout.selectCashOption();
-        checkout.submitCashOrder();
-        Assert.assertTrue(checkout.thankYouMessage());
+
+        checkout.selectOnlineOption();
+        var payForm = checkout.submitOnlineOrder();
+        payForm.fillPaymobForm(dataModel().paymobForm.numberCard, dataModel().paymobForm.expiryCard, dataModel().paymobForm.cvcCard,
+                dataModel().paymobForm.nameCard);
+
         // close new tab
         closeTab();
         // back to product tab
@@ -63,39 +65,21 @@ public class cashonDeliveryCancelTestStock extends BaseTests {
         System.out.println("old StocK = " + oldStock + " -->" + "New StocK = " +newStock);
         System.out.println("old Reserved = " +oldReserved + " -->" +"new Reserved = " +  newReserved);
 
+
         int newRes = newReserved - 1;
         Assert.assertEquals(oldStock ,newStock);
         Assert.assertEquals(oldReserved ,newRes);
 
-        openNewTab();
-        goHomePage();
-
-        admin = homePage.openAdmin();
-        var salePage = admin.openSalesPage();
-        salePage.resestFilter();
-        salePage.clickSearchButton();
-        var productPage = salePage.openFirstOrder();
-        productPage.clickPreparingButton();
-        productPage.clickOnWayButton();
-        productPage.clickDeliveredButton();
-        Assert.assertTrue(productPage.paidStatusIsAppear());
-
-        // close new tab
-        closeTab();
-        // back to product tab
-        backToTab(productTab);
+        sleepPerMinutes(12);
         refreshPage();
         product.getStocks();
         newStock = product.getStock();
         newReserved = product.getReserved();
-        System.out.println("after order Cancel");
-        System.out.println("old StocK = " + oldStock + "-->" + "New StocK = " +newStock);
-        System.out.println("old Reserved = " +oldReserved + "-->" +"new Reserved = " +  newReserved);
+        System.out.println("after order cancel");
+        System.out.println("old StocK = " + oldStock + "--> " + "New StocK = " +newStock);
+        System.out.println("old Reserved = " +oldReserved + "--> " +"new Reserved = " +  newReserved);
 
-        int newSto = newStock + 1;
-        Assert.assertEquals(oldStock ,newSto);
+        Assert.assertEquals(oldStock ,newStock);
         Assert.assertEquals(oldReserved ,newReserved );
-        sleepPerSeconds(3);
     }
-
 }

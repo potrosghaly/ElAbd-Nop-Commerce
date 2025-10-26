@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 
 import static reader.ReadDataFromJson.dataModel;
 
-public class onlineOrderDeliverdTestStock extends BaseTests {
+public class TestStockOnlineOrderDeliverd extends BaseTests {
     @Test
     public void testStockAfterDeliverdOnlineOrder() throws Exception {
 
@@ -15,7 +15,7 @@ public class onlineOrderDeliverdTestStock extends BaseTests {
         login.clickSendOtpButton();
         login.writePassword(dataModel().password);
         var homePage = login.clickLogin();
-        //homePage.checkLocation();
+        homePage.checkLocation();
         var admin = homePage.openAdmin();
         var product = admin.openProductPage();
         product.resetFilter();

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Regression Test Suite">
+    <test name="Chrome">
+        <classes>
+            <class name="stocks.TestStockCashonDeliveryCancel"> </class>
+            <class name="stocks.TestStockCashOnDeliveryDeliverd"> </class>
+            <class name="stocks.TestStockOnlineOrderDeliverd"> </class>
+            <class name="stocks.TestStockOnlineOrderCanceled"> </class>
+            <class name="stocks.TestStock3TimeInvalidPaid"> </class>
+            <class name="stocks.TestStockOnHoldOrders"> </class>
+
+        </classes>
+    </test>
+</suite>
