@@ -66,7 +66,7 @@ public class BaseTests {
     @BeforeMethod
     public void goHome(Method method) throws Exception {
         ScreenRecorderUtil.startRecord(method.getName());
-        driver.get(dataModel().newDevURL);
+        goHomePage();
         utilsTests = new UtilsTests(driver);
         utilsTests.createTestCaseInReport(method);
 
@@ -114,9 +114,6 @@ public class BaseTests {
         Thread.sleep(1000L * minutes * 60);
     }
 
-    public void goHomePage() throws Exception {
-        driver.get(dataModel().stagingURL);
-    }
 
 
     public String saveTab() {
