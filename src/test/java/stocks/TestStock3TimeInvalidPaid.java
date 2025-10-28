@@ -33,12 +33,6 @@ public class TestStock3TimeInvalidPaid extends BaseTests {
         openNewTab();
         goHomePage();
 
-        login = homePage.clickLoginIcon();
-        login.writePhoneNumber(dataModel().phone);
-        login.clickSendOtpButton();
-        login.writePassword(dataModel().password);
-        homePage = login.clickLogin();
-
         homePage.searchByProductName(productName);
         // create order
 
@@ -75,9 +69,8 @@ public class TestStock3TimeInvalidPaid extends BaseTests {
         closeTab();
         // back to product tab
         backToTab(productTab);
-        sleepPerMinutes(1);
+        sleepPerSeconds(10);
         refreshPage();
-        sleepPerMinutes(1);
         product.getStocks();
         int newStock = product.getStock();
         int newReserved = product.getReserved();
@@ -85,11 +78,8 @@ public class TestStock3TimeInvalidPaid extends BaseTests {
         System.out.println("old StocK = " + oldStock + " --> " + "New StocK = " +newStock);
         System.out.println("old Reserved = " +oldReserved + " --> " +"new Reserved = " +  newReserved);
 
-
         Assert.assertEquals(oldStock ,newStock);
         Assert.assertEquals(oldReserved ,newReserved);
-        sleepPerSeconds(3);
-
     }
 
 

@@ -15,7 +15,7 @@ public class TestStockCashonDeliveryCancel extends BaseTests {
         login.writePhoneNumber(dataModel().phone);
         login.clickSendOtpButton();
         login.writePassword(dataModel().password);
-        var homePage = login.clickLogin();
+        homePage = login.clickLogin();
         homePage.checkLocation();
 
 
@@ -37,14 +37,9 @@ public class TestStockCashonDeliveryCancel extends BaseTests {
         openNewTab();
         goHomePage();
 
-        login = homePage.clickLoginIconWithoutLocation();
-        login.writePhoneNumber(dataModel().phone);
-        login.clickSendOtpButton();
-        login.writePassword(dataModel().password);
-        homePage = login.clickLogin();
 
-        homePage.searchByProductName(productName);
         // create order
+        homePage.searchByProductName(productName);
         homePage.addProductToCart();
         var cartPage = homePage.openCartPage();
         var checkout = cartPage.openCheckoutPage();
@@ -53,6 +48,8 @@ public class TestStockCashonDeliveryCancel extends BaseTests {
         Assert.assertTrue(checkout.thankYouMessage());
         // close new tab
         closeTab();
+
+
         // back to product tab
         backToTab(productTab);
         refreshPage();
@@ -61,12 +58,12 @@ public class TestStockCashonDeliveryCancel extends BaseTests {
         int newStock = product.getStock();
         int newReserved = product.getReserved();
 
-        System.out.println("old StocK = " + oldStock + " -->" + "New StocK = " +newStock);
-        System.out.println("old Reserved = " +oldReserved + " -->" +"new Reserved = " +  newReserved);
+        System.out.println("old StocK = " + oldStock + " -->" + "New StocK = " + newStock);
+        System.out.println("old Reserved = " + oldReserved + " -->" + "new Reserved = " + newReserved);
 
         int newRes = newReserved - 1;
-        Assert.assertEquals(oldStock ,newStock);
-        Assert.assertEquals(oldReserved ,newRes);
+        Assert.assertEquals(oldStock, newStock);
+        Assert.assertEquals(oldReserved, newRes);
 
         openNewTab();
         goHomePage();
@@ -76,11 +73,7 @@ public class TestStockCashonDeliveryCancel extends BaseTests {
         salePage.resestFilter();
         salePage.clickSearchButton();
         var productPage = salePage.openFirstOrder();
-        productPage.clickPreparingButton();
-        productPage.clickOnWayButton();
-        productPage.clickDeliveredButton();
-        productPage.markOrderAsPaid();
-        Assert.assertTrue(productPage.paidStatusIsAppear());
+        productPage.clickCancelButton();
 
         // close new tab
         closeTab();
@@ -94,10 +87,9 @@ public class TestStockCashonDeliveryCancel extends BaseTests {
         System.out.println("old StocK = " + oldStock + "-->" + "New StocK = " +newStock);
         System.out.println("old Reserved = " +oldReserved + "-->" +"new Reserved = " +  newReserved);
 
-        int newSto = newStock + 1;
-        Assert.assertEquals(oldStock ,newSto);
-        Assert.assertEquals(oldReserved ,newReserved );
-        sleepPerSeconds(3);
+
+        Assert.assertEquals(oldStock, newStock);
+        Assert.assertEquals(oldReserved, newReserved);
     }
 
 }

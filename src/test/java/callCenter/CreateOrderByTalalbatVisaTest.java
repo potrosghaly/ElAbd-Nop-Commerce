@@ -35,6 +35,7 @@ public class CreateOrderByTalalbatVisaTest extends BaseTests {
         var productPage = salePage.openFirstOrder();
         Assert.assertTrue(productPage.paidStatusIsAppear());
         productPage.clickPreparingButton();
+        productPage.closeTab(2);
         productPage.clickOnWayButton();
         productPage.clickDeliveredButton();
         Assert.assertTrue(productPage.paidStatusIsAppear());

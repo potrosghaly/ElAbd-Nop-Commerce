@@ -36,12 +36,6 @@ public class TestStockCashOnDeliveryDeliverd extends BaseTests {
         openNewTab();
         goHomePage();
 
-        login = homePage.clickLoginIcon();
-        login.writePhoneNumber(dataModel().phone);
-        login.clickSendOtpButton();
-        login.writePassword(dataModel().password);
-        homePage = login.clickLogin();
-
         homePage.searchByProductName(productName);
         // create order
         homePage.addProductToCart();
@@ -94,7 +88,6 @@ public class TestStockCashOnDeliveryDeliverd extends BaseTests {
         int newSto = newStock + 1;
         Assert.assertEquals(oldStock ,newSto);
         Assert.assertEquals(oldReserved ,newReserved );
-        sleepPerSeconds(3);
     }
 
 

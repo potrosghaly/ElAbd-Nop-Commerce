@@ -35,11 +35,6 @@ public class TestStockOnHoldOrders extends BaseTests {
         openNewTab();
         goHomePage();
 
-        login = homePage.clickLoginIcon();
-        login.writePhoneNumber(dataModel().phone);
-        login.clickSendOtpButton();
-        login.writePassword(dataModel().password);
-        homePage = login.clickLogin();
 
         homePage.searchByProductName(productName);
         // create order
@@ -70,7 +65,7 @@ public class TestStockOnHoldOrders extends BaseTests {
         Assert.assertEquals(oldStock ,newStock);
         Assert.assertEquals(oldReserved ,newRes);
 
-        sleepPerMinutes(12);
+        sleepPerMinutes(10);
         refreshPage();
         product.getStocks();
         newStock = product.getStock();

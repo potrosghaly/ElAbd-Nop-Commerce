@@ -35,6 +35,7 @@ public class CreateOrderByCallCenterTest extends BaseTests {
         var productPage = salePage.openFirstOrder();
         Assert.assertTrue(productPage.pendingStatusIsAppear());
         productPage.clickPreparingButton();
+        productPage.closeTab(2);
         productPage.clickOnWayButton();
         productPage.clickDeliveredButton();
         productPage.markOrderAsPaid();

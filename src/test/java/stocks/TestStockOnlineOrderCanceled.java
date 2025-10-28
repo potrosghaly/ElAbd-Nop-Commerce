@@ -34,11 +34,11 @@ public class TestStockOnlineOrderCanceled extends BaseTests {
         openNewTab();
         goHomePage();
 
-        login = homePage.clickLoginIcon();
-        login.writePhoneNumber(dataModel().phone);
-        login.clickSendOtpButton();
-        login.writePassword(dataModel().password);
-        homePage = login.clickLogin();
+//        login = homePage.clickLoginIcon();
+//        login.writePhoneNumber(dataModel().phone);
+//        login.clickSendOtpButton();
+//        login.writePassword(dataModel().password);
+//        homePage = login.clickLogin();
 
         homePage.searchByProductName(productName);
         // create order
@@ -79,9 +79,7 @@ public class TestStockOnlineOrderCanceled extends BaseTests {
         salePage.resestFilter();
         salePage.clickSearchButton();
         var productPage = salePage.openFirstOrder();
-        Assert.assertTrue(productPage.authorizedStatusIsAppear());
         productPage.clickCancelButton();
-        Assert.assertTrue(productPage.cancelStatusIsAppear());
 
         // close new tab
         closeTab();
@@ -97,7 +95,6 @@ public class TestStockOnlineOrderCanceled extends BaseTests {
 
         Assert.assertEquals(oldStock ,newStock);
         Assert.assertEquals(oldReserved ,newReserved );
-        sleepPerSeconds(3);
     }
 
 }

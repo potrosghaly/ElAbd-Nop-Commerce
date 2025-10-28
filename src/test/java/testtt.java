@@ -2,12 +2,32 @@ import base.BaseTests;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import java.io.FileNotFoundException;
+
 import static reader.ReadDataFromJson.dataModel;
 
 public class testtt extends BaseTests {
 
 
-    @Test
+
+    @Test(priority = 1)
+    public void createCashOrderAsDelivered() throws InterruptedException, FileNotFoundException {
+        var login = homePage.clickLoginIcon();
+        login.writePhoneNumber(dataModel().phone);
+        login.clickSendOtpButton();
+        login.writePassword(dataModel().password);
+        var homePage = login.clickLogin();
+        var admin = homePage.openAdmin();
+        var salePage = admin.openSalesPage();
+        var productPage = salePage.openFirstOrder();
+        Assert.assertTrue(productPage.pendingStatusIsAppear());
+        productPage.clickPreparingButton();
+        productPage.closeTab(2);
+        productPage.clickOnWayButton();
+
+    }
+
+    //@Test
     public void testStockAfterDeliverdCashOnDelivery() throws Exception {
 
         var login = homePage.clickLoginIcon();

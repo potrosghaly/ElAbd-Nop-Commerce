@@ -28,6 +28,11 @@ public class BaseTests {
     FirefoxOptions firefoxOptions;
 
 
+    public void goHomePage() throws Exception {
+        driver.get(dataModel().newDevURL);
+    }
+
+
     @BeforeClass
     @Parameters("browser")
     public void setUp(@Optional("Chrome") String browser) {
@@ -40,7 +45,10 @@ public class BaseTests {
     @Parameters("browser")
     public void setUpBrowser(String browser) {
         if (browser.equalsIgnoreCase("Chrome")) {
-            driver = new ChromeDriver();
+            ChromeOptions chromeOptions = new ChromeOptions();
+            // ✅ تفعيل الطباعة الصامتة بدون البوب أب
+            chromeOptions.addArguments("--kiosk-printing");
+            driver = new ChromeDriver(chromeOptions);
 
         } else if (browser.equalsIgnoreCase("firefox")) {
             driver = new FirefoxDriver();

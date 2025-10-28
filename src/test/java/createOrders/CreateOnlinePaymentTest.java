@@ -40,6 +40,7 @@ public class CreateOnlinePaymentTest extends BaseTests {
         var productPage = salePage.openFirstOrder();
         Assert.assertTrue(productPage.authorizedStatusIsAppear());
         productPage.clickPreparingButton();
+        productPage.closeTab(2);
         productPage.clickOnWayButton();
         productPage.clickDeliveredButton();
         Assert.assertTrue(productPage.paidStatusIsAppear());

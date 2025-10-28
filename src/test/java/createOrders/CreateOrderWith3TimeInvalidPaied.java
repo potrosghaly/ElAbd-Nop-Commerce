@@ -58,7 +58,6 @@ public class CreateOrderWith3TimeInvalidPaied extends BaseTests {
         salePage.resestFilter();
         salePage.searchByOrderID(orderID);
         Assert.assertTrue(salePage.tableIsEmpty());
-
     }
 
 }

@@ -1,12 +1,8 @@
 package createOrders;
-
 import base.BaseTests;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-
 import java.io.FileNotFoundException;
-
-import static org.testng.Assert.assertTrue;
 import static reader.ReadDataFromJson.dataModel;
 
 public class CreateCashOrdersTest extends BaseTests {
@@ -36,6 +32,7 @@ public class CreateCashOrdersTest extends BaseTests {
         var productPage = salePage.openFirstOrder();
         Assert.assertTrue(productPage.pendingStatusIsAppear());
         productPage.clickPreparingButton();
+        productPage.closeTab(2);
         productPage.clickOnWayButton();
         productPage.clickDeliveredButton();
         productPage.markOrderAsPaid();

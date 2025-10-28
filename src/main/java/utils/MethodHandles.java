@@ -9,11 +9,8 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import java.time.Duration;
-
 import static org.testng.Assert.assertEquals;
-
 
 
 public class MethodHandles {
@@ -72,6 +69,13 @@ public class MethodHandles {
     public void waitForUrlcontain(String partialUrl, int timeoutInSeconds) {
         WebDriverWait wait = new WebDriverWait(driver, java.time.Duration.ofSeconds(timeoutInSeconds));
         wait.until(ExpectedConditions.urlContains(partialUrl));
+
+    }
+
+    public void waitForOpen2Tab(int timeoutInSeconds) {
+        WebDriverWait wait = new WebDriverWait(driver, java.time.Duration.ofSeconds(timeoutInSeconds));
+        wait.until(ExpectedConditions.numberOfWindowsToBe(2));
+
 
     }
 
@@ -170,6 +174,18 @@ public class MethodHandles {
             try {
                 Actions actions = new Actions(driver);
                 actions.sendKeys(Keys.ENTER).perform();
+                break;
+            } catch (StaleElementReferenceException e) {
+
+            }
+        }
+    }
+
+    protected void escKey() {
+        for (int i = 0; i < 5; i++) {
+            try {
+                Actions actions = new Actions(driver);
+                actions.sendKeys(Keys.ESCAPE).perform();
                 break;
             } catch (StaleElementReferenceException e) {
 

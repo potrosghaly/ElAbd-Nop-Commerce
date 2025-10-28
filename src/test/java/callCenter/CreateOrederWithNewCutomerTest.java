@@ -60,6 +60,7 @@ public class CreateOrederWithNewCutomerTest extends BaseTests {
         salePage.clickResetAndSearchButton();
         var productPage = salePage.openFirstOrder();
         productPage.clickPreparingButton();
+        productPage.closeTab(2);
         productPage.clickOnWayButton();
         productPage.clickDeliveredButton();
         productPage.markOrderAsPaid();

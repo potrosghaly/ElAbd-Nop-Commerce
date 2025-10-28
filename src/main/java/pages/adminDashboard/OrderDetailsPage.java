@@ -78,22 +78,31 @@ public class OrderDetailsPage extends MethodHandles {
     public boolean unchangeAlertIsAppear() {
         return isDisplayed(unchangedAlertUnpaidOrder, 30);
     }
-    public String getMerchantNumber()
-    {
-        return getText(merchantReferenceNumber , 30);
+    public String getMerchantNumber() {
+        return getText(merchantReferenceNumber, 30);
     }
-
-    public PaymobDashboardPage openpaymobPage()
-    {
-        hover(paymobDashboardButton , 30);
-        click(paymobDashboardButton , 30);
-        invisibilityOf(loadingIcon , 30);
+    public PaymobDashboardPage openpaymobPage() {
+        hover(paymobDashboardButton, 30);
+        click(paymobDashboardButton, 30);
+        invisibilityOf(loadingIcon, 30);
         return new PaymobDashboardPage(driver);
     }
 
 
+    public int windowNumber()
+    {
+        return driver.getWindowHandles().size();
+    }
 
+    public void closeTab (int tabNumber)
+    {
+        String originalTab = driver.getWindowHandle();
 
+        // Step 2: Switch to the second tab and close it
+        driver.switchTo().window((String) driver.getWindowHandles().toArray()[tabNumber - 1]);
+        driver.close();
 
-
+        // Step 3: Switch back to the first tab
+        driver.switchTo().window(originalTab);
+    }
 }
