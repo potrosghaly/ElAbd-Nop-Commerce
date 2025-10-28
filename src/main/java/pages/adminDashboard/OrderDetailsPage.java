@@ -46,13 +46,14 @@ public class OrderDetailsPage extends MethodHandles {
 
     public void clickCancelButton() {
         click(cancelButton, 30);
-        visiblityOfElement(cancelReasonButton , 30);
+        visiblityOfElement(cancelReasonButton, 30);
         click(cancelReasonButton, 30);
         click(confirmCancelButton, 30);
         invisibilityOf(loadingIcon, 30);
     }
 
     public void markOrderAsPaid() {
+        visiblityOfElement(markAsPaidButton , 30);
         click(markAsPaidButton, 30);
         click(confirmMarkAsPaidButton, 30);
     }

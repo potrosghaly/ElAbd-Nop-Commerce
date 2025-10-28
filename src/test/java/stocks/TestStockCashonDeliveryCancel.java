@@ -83,8 +83,8 @@ public class TestStockCashonDeliveryCancel extends BaseTests {
         newStock = product.getStock();
         newReserved = product.getReserved();
         System.out.println("after order Cancel");
-        System.out.println("old StocK = " + oldStock + "-->" + "New StocK = " +newStock);
-        System.out.println("old Reserved = " +oldReserved + "-->" +"new Reserved = " +  newReserved);
+        System.out.println("old StocK = " + oldStock + "-->" + "New StocK = " + newStock);
+        System.out.println("old Reserved = " + oldReserved + "-->" + "new Reserved = " + newReserved);
 
 
         Assert.assertEquals(oldStock, newStock);
