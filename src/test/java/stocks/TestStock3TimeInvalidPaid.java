@@ -14,6 +14,8 @@ public class TestStock3TimeInvalidPaid extends BaseTests {
         login.clickSendOtpButton();
         login.writePassword(dataModel().password);
         var homePage = login.clickLogin();
+
+
         homePage.checkLocation();
         var admin = homePage.openAdmin();
         var product = admin.openProductPage();

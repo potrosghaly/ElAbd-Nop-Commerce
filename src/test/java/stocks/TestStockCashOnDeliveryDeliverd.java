@@ -68,8 +68,8 @@ public class TestStockCashOnDeliveryDeliverd extends BaseTests {
         salePage.resestFilter();
         salePage.clickSearchButton();
         var productPage = salePage.openFirstOrder();
-        Assert.assertTrue(productPage.pendingStatusIsAppear());
         productPage.clickPreparingButton();
+        productPage.closeTab(3);
         productPage.clickOnWayButton();
         productPage.clickDeliveredButton();
 

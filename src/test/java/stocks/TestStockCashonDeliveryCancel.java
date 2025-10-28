@@ -3,7 +3,6 @@ package stocks;
 import base.BaseTests;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-
 import static reader.ReadDataFromJson.dataModel;
 
 public class TestStockCashonDeliveryCancel extends BaseTests {
