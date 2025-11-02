@@ -86,6 +86,7 @@ public class TestStockOnlineOrderDeliverd extends BaseTests {
 
         // close new tab
         closeTab();
+
         // back to product tab
         backToTab(productTab);
         refreshPage();

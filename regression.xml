@@ -5,8 +5,6 @@
         <classes>
             <class name="GuestUser.addProductToCartAsGuestTest"> </class>
 
-
-
             <class name="createOrders.CreateCashOrdersTest"> </class>
             <class name="createOrders.CreateOnlinePaymentTest"> </class>
             <class name="createOrders.CreateOrderAsGuestUserTest"> </class>
