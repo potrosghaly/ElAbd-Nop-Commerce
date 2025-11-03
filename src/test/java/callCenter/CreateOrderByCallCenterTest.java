@@ -10,7 +10,7 @@ import static reader.ReadDataFromJson.dataModel;
 
 public class CreateOrderByCallCenterTest extends BaseTests {
 
-    @Test(priority = 1)
+    @Test
     public void createCallCenterOrderAsDelivered() throws FileNotFoundException, InterruptedException {
         var login = homePage.clickLoginIcon();
         login.writePhoneNumber(dataModel().phone);
@@ -42,7 +42,7 @@ public class CreateOrderByCallCenterTest extends BaseTests {
         Assert.assertTrue(productPage.paidStatusIsAppear());
     }
 
-    @Test(priority = 2)
+    @Test(dependsOnMethods = "createCallCenterOrderAsDelivered")
     public void createCallCenterOrderAsCancel() throws FileNotFoundException {
 
 

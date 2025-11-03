@@ -13,7 +13,7 @@ public class CreateOnlinePaymentTest extends BaseTests {
     String merchantNumber = "";
 
 
-    @Test(priority = 1)
+    @Test
     public void createOnlineOrderAsDelivered() throws InterruptedException, FileNotFoundException {
         var login = homePage.clickLoginIcon();
         login.writePhoneNumber(dataModel().phone);
@@ -55,7 +55,7 @@ public class CreateOnlinePaymentTest extends BaseTests {
 
     }
 
-    @Test(priority = 2)
+    @Test (dependsOnMethods = "createOnlineOrderAsDelivered")
     public void createOnlineOrderAsCancel() throws FileNotFoundException {
 //        var login = homePage.clickLoginIcon();
 //        login.writePhoneNumber(dataModel().phone);

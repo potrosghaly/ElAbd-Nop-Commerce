@@ -8,7 +8,7 @@ import static reader.ReadDataFromJson.dataModel;
 public class CreateCashOrdersTest extends BaseTests {
 
 
-    @Test(priority = 1)
+    @Test
     public void createCashOrderAsDelivered() throws InterruptedException, FileNotFoundException {
         var login = homePage.clickLoginIcon();
         login.writePhoneNumber(dataModel().phone);
@@ -39,7 +39,7 @@ public class CreateCashOrdersTest extends BaseTests {
         Assert.assertTrue(productPage.paidStatusIsAppear());
     }
 
-    @Test(priority = 2)
+    @Test (dependsOnMethods = "createCashOrderAsDelivered")
     public void createCashOrderAsCancel() throws FileNotFoundException {
         homePage.checkLocation();
         homePage.openCategoryPage();

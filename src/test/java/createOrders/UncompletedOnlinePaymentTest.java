@@ -8,7 +8,7 @@ import java.io.FileNotFoundException;
 import static reader.ReadDataFromJson.dataModel;
 
 public class UncompletedOnlinePaymentTest extends BaseTests {
-    @Test(priority = 1)
+    @Test
     public void createUnpaidOrder() throws InterruptedException, FileNotFoundException {
         var login = homePage.clickLoginIcon();
         login.writePhoneNumber(dataModel().phone);
@@ -25,7 +25,8 @@ public class UncompletedOnlinePaymentTest extends BaseTests {
         payForm.fillPaymobForm(dataModel().paymobForm.numberCard, dataModel().paymobForm.expiryCard, dataModel().paymobForm.cvcCard,
                 dataModel().paymobForm.nameCard);
     }
-//
+
+
 //    @Test(priority = 2)
 //    public void checkUnpaidStatusIsPending() throws InterruptedException {
 //        var admin = homePage.openAdmin();

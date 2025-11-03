@@ -3,8 +3,6 @@ package callCenter;
 import base.BaseTests;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.adminDashboard.AdminPage;
-import customer.DeleteCustomerTest;
 
 import java.io.FileNotFoundException;
 
@@ -12,7 +10,7 @@ import static reader.ReadDataFromJson.dataModel;
 
 public class CreateOrederWithNewCutomerTest extends BaseTests {
 
-    @Test (priority = 1)
+    @Test
     public void deleteTheUserIfExsiting() throws FileNotFoundException, InterruptedException {
         var login = homePage.clickLoginIcon();
         login.writePhoneNumber(dataModel().phone);
@@ -32,7 +30,7 @@ public class CreateOrederWithNewCutomerTest extends BaseTests {
         }
     }
 
-    @Test (priority = 2)
+    @Test (dependsOnMethods = "deleteTheUserIfExsiting")
     public void createOrderToNewUser() throws FileNotFoundException {
         var callCenterData = dataModel().callCenterUserForm;
 

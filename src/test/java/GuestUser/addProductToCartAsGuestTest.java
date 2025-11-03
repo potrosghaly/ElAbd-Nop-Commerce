@@ -10,7 +10,7 @@ import static reader.ReadDataFromJson.dataModel;
 
 public class addProductToCartAsGuestTest extends BaseTests {
 
-    @Test(priority = 1)
+    @Test
     public void tryAddToCartAsGuestThenOpenMap() throws FileNotFoundException, InterruptedException {
         var login = homePage.clickLoginIcon();
         login.writePhoneNumber(dataModel().phone);
@@ -26,7 +26,7 @@ public class addProductToCartAsGuestTest extends BaseTests {
 
     }
 
-    @Test(priority = 2)
+    @Test(dependsOnMethods = "tryAddToCartAsGuestThenOpenMap")
     public void tryAddToCartAsGuestThenOpenlogin() throws FileNotFoundException, InterruptedException {
 //        var login = homePage.clickLoginIcon();
 //        login.writePhoneNumber(dataModel().phone);

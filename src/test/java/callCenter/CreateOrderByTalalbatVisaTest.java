@@ -9,7 +9,7 @@ import java.io.FileNotFoundException;
 import static reader.ReadDataFromJson.dataModel;
 
 public class CreateOrderByTalalbatVisaTest extends BaseTests {
-    @Test(priority = 1)
+    @Test
     public void creatTalabatOrderAsDelivered() throws FileNotFoundException {
         var login = homePage.clickLoginIcon();
         login.writePhoneNumber(dataModel().phone);
@@ -42,7 +42,7 @@ public class CreateOrderByTalalbatVisaTest extends BaseTests {
     }
 
 
-    @Test(priority = 2)
+    @Test (dependsOnMethods = "creatTalabatOrderAsDelivered")
     public void createOnlineOrderAsCancel() throws FileNotFoundException {
 
         var admin = homePage.openAdmin();

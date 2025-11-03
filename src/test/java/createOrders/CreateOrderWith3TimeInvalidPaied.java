@@ -11,7 +11,7 @@ import static reader.ReadDataFromJson.dataModel;
 public class CreateOrderWith3TimeInvalidPaied extends BaseTests {
 
     String  orderID = "";
-    @Test(priority = 1)
+    @Test
     public void createUnpaidOrder3Time() throws InterruptedException, FileNotFoundException {
         var login = homePage.clickLoginIcon();
         login.writePhoneNumber(dataModel().phone);
@@ -51,7 +51,7 @@ public class CreateOrderWith3TimeInvalidPaied extends BaseTests {
         System.out.println(orderID);
     }
 
-    @Test(priority = 2)
+    @Test(dependsOnMethods = "createUnpaidOrder3Time")
     public void checkUnpaidStatusAfter15min() throws InterruptedException {
         var admin = homePage.openAdmin();
         var salePage = admin.openSalesPage();
