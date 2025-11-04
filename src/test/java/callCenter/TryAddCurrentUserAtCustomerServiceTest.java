@@ -12,12 +12,7 @@ public class TryAddCurrentUserAtCustomerServiceTest extends BaseTests {
     @Test
     public void addCurrentUserAtCustomerService() throws FileNotFoundException {
         var callCenterData = dataModel().callCenterUserForm;
-
-        var login = homePage.clickLoginIcon();
-        login.writePhoneNumber(dataModel().phone);
-        login.clickSendOtpButton();
-        login.writePassword(dataModel().password);
-        var homePage = login.clickLogin();
+        method.login();
         var admin = homePage.openAdmin();
 
         // open call center and create order

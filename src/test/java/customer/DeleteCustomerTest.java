@@ -13,11 +13,7 @@ public class DeleteCustomerTest extends BaseTests {
 
     @Test
     public void tryToDeleteCutomerProfile() throws FileNotFoundException {
-        var login = homePage.clickLoginIcon();
-        login.writePhoneNumber(dataModel().phone);
-        login.clickSendOtpButton();
-        login.writePassword(dataModel().password);
-        var homePage = login.clickLogin();
+        method.login();
         var admin = homePage.openAdmin();
 
         var customer = admin.openCustomerPage();

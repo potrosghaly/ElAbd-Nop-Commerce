@@ -9,13 +9,7 @@ public class TestStock3TimeInvalidPaid extends BaseTests {
     @Test
     public void testStock3TimeInvalidPaidOrder() throws Exception {
 
-        var login = homePage.clickLoginIcon();
-        login.writePhoneNumber(dataModel().phone);
-        login.clickSendOtpButton();
-        login.writePassword(dataModel().password);
-        var homePage = login.clickLogin();
-
-
+        method.login();
         homePage.checkLocation();
         var admin = homePage.openAdmin();
         var product = admin.openProductPage();

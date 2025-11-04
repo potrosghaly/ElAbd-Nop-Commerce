@@ -6,17 +6,11 @@ import org.testng.annotations.Test;
 
 import java.io.FileNotFoundException;
 
-import static reader.ReadDataFromJson.dataModel;
-
 public class addProductToCartAsGuestTest extends BaseTests {
 
     @Test
     public void tryAddToCartAsGuestThenOpenMap() throws FileNotFoundException, InterruptedException {
-        var login = homePage.clickLoginIcon();
-        login.writePhoneNumber(dataModel().phone);
-        login.clickSendOtpButton();
-        login.writePassword(dataModel().password);
-        var homePage = login.clickLogin();
+        method.login();
         homePage.clickLogout();
         homePage.openCategoryPage();
         homePage.addProductToCartAsGuest();

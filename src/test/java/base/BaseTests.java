@@ -9,6 +9,7 @@ import org.openqa.selenium.firefox.FirefoxOptions;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
 import pages.HomePage;
+import utils.Methods;
 import utils.ScreenRecorderUtil;
 import utils.UtilsTests;
 
@@ -22,6 +23,8 @@ public class BaseTests {
 
     protected WebDriver driver;
     protected HomePage homePage;
+    protected Methods method;
+
     UtilsTests utilsTests;
 
     ChromeOptions chromeOptions;
@@ -39,6 +42,7 @@ public class BaseTests {
         setUpBrowser(browser);
         driver.manage().window().maximize();
         homePage = new HomePage(driver);
+        method = new Methods(homePage);
     }
 
 

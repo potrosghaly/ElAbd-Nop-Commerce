@@ -12,11 +12,7 @@ public class CreateOrederWithNewCutomerTest extends BaseTests {
 
     @Test
     public void deleteTheUserIfExsiting() throws FileNotFoundException, InterruptedException {
-        var login = homePage.clickLoginIcon();
-        login.writePhoneNumber(dataModel().phone);
-        login.clickSendOtpButton();
-        login.writePassword(dataModel().password);
-        var homePage = login.clickLogin();
+        method.login();
         var admin = homePage.openAdmin();
 
         var customer = admin.openCustomerPage();

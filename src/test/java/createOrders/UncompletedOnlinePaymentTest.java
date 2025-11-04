@@ -10,11 +10,7 @@ import static reader.ReadDataFromJson.dataModel;
 public class UncompletedOnlinePaymentTest extends BaseTests {
     @Test
     public void createUnpaidOrder() throws InterruptedException, FileNotFoundException {
-        var login = homePage.clickLoginIcon();
-        login.writePhoneNumber(dataModel().phone);
-        login.clickSendOtpButton();
-        login.writePassword(dataModel().password);
-        var homePage = login.clickLogin();
+        method.login();
         homePage.checkLocation();
         homePage.openCategoryPage();
         homePage.addProductToCart();

@@ -15,11 +15,8 @@ public class CreateOnlinePaymentTest extends BaseTests {
 
     @Test
     public void createOnlineOrderAsDelivered() throws InterruptedException, FileNotFoundException {
-        var login = homePage.clickLoginIcon();
-        login.writePhoneNumber(dataModel().phone);
-        login.clickSendOtpButton();
-        login.writePassword(dataModel().password);
-        var homePage = login.clickLogin();
+        method.login();
+
         homePage.checkLocation();
         homePage.openCategoryPage();
         homePage.addProductToCart();
@@ -57,11 +54,7 @@ public class CreateOnlinePaymentTest extends BaseTests {
 
     @Test (dependsOnMethods = "createOnlineOrderAsDelivered")
     public void createOnlineOrderAsCancel() throws FileNotFoundException {
-//        var login = homePage.clickLoginIcon();
-//        login.writePhoneNumber(dataModel().phone);
-//        login.clickSendOtpButton();
-//        login.writePassword(dataModel().password);
-//        var homePage = login.clickLogin();
+//      method.login();
 
         homePage.checkLocation();
         homePage.openCategoryPage();

@@ -13,11 +13,8 @@ public class CreateOrderWith3TimeInvalidPaied extends BaseTests {
     String  orderID = "";
     @Test
     public void createUnpaidOrder3Time() throws InterruptedException, FileNotFoundException {
-        var login = homePage.clickLoginIcon();
-        login.writePhoneNumber(dataModel().phone);
-        login.clickSendOtpButton();
-        login.writePassword(dataModel().password);
-        var homePage = login.clickLogin();
+        method.login();
+
         homePage.checkLocation();
         homePage.openCategoryPage();
         homePage.addProductToCart();

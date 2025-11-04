@@ -10,11 +10,7 @@ public class TestStockOnlineOrderDeliverd extends BaseTests {
     @Test
     public void testStockAfterDeliverdOnlineOrder() throws Exception {
 
-        var login = homePage.clickLoginIcon();
-        login.writePhoneNumber(dataModel().phone);
-        login.clickSendOtpButton();
-        login.writePassword(dataModel().password);
-        var homePage = login.clickLogin();
+        method.login();
         homePage.checkLocation();
         var admin = homePage.openAdmin();
         var product = admin.openProductPage();

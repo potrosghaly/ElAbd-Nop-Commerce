@@ -1,16 +1,14 @@
 import base.BaseTests;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import utils.Methods;
 
 import java.io.FileNotFoundException;
 
 public class testtt extends BaseTests {
 
-    Methods method = new Methods(homePage);  // مرر homePage الحالي
     @Test(priority = 1)
     public void createCashOrderAsDelivered() throws InterruptedException, FileNotFoundException {
-        var homePage = method.login();
+        method.login();
         var admin = homePage.openAdmin();
         var salePage = admin.openSalesPage();
         var productPage = salePage.openFirstOrder();
@@ -21,7 +19,7 @@ public class testtt extends BaseTests {
 
     }
 
-    
+
 
 //    @Test
 //    public void getMerchantNumberLoop() throws FileNotFoundException, InterruptedException, FileNotFoundException {
@@ -46,8 +44,6 @@ public class testtt extends BaseTests {
 //    }
 //
 //    List<Integer> ID = Arrays.asList(1414986);
-
-
 
 
 }

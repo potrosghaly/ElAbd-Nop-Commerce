@@ -12,11 +12,7 @@ public class CreateOrderByCallCenterTest extends BaseTests {
 
     @Test
     public void createCallCenterOrderAsDelivered() throws FileNotFoundException, InterruptedException {
-        var login = homePage.clickLoginIcon();
-        login.writePhoneNumber(dataModel().phone);
-        login.clickSendOtpButton();
-        login.writePassword(dataModel().password);
-        var homePage = login.clickLogin();
+        method.login();
         var admin = homePage.openAdmin();
 
         // open call center and create order

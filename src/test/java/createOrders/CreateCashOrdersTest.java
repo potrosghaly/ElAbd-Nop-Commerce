@@ -1,20 +1,17 @@
 package createOrders;
+
 import base.BaseTests;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+
 import java.io.FileNotFoundException;
-import static reader.ReadDataFromJson.dataModel;
 
 public class CreateCashOrdersTest extends BaseTests {
 
 
     @Test
     public void createCashOrderAsDelivered() throws InterruptedException, FileNotFoundException {
-        var login = homePage.clickLoginIcon();
-        login.writePhoneNumber(dataModel().phone);
-        login.clickSendOtpButton();
-        login.writePassword(dataModel().password);
-        var homePage = login.clickLogin();
+        method.login();
         homePage.checkLocation();
         homePage.openCategoryPage();
         homePage.addProductToCart();

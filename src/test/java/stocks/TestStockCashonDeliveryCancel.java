@@ -3,7 +3,6 @@ package stocks;
 import base.BaseTests;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import static reader.ReadDataFromJson.dataModel;
 
 public class TestStockCashonDeliveryCancel extends BaseTests {
 
@@ -11,10 +10,7 @@ public class TestStockCashonDeliveryCancel extends BaseTests {
     public void testStockAfterCancelCashOnDelivery() throws Exception {
 
         var login = homePage.clickLoginIcon();
-        login.writePhoneNumber(dataModel().phone);
-        login.clickSendOtpButton();
-        login.writePassword(dataModel().password);
-        homePage = login.clickLogin();
+        method.login();
         homePage.checkLocation();
 
 

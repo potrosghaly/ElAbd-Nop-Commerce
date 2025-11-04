@@ -11,11 +11,7 @@ import static reader.ReadDataFromJson.dataModel;
 public class CreateOrderByTalalbatVisaTest extends BaseTests {
     @Test
     public void creatTalabatOrderAsDelivered() throws FileNotFoundException {
-        var login = homePage.clickLoginIcon();
-        login.writePhoneNumber(dataModel().phone);
-        login.clickSendOtpButton();
-        login.writePassword(dataModel().password);
-        var homePage = login.clickLogin();
+        method.login();
         var admin = homePage.openAdmin();
 
         // open call center and create order
