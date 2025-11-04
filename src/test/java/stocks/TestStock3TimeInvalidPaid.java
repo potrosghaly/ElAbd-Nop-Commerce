@@ -1,9 +1,8 @@
 package stocks;
+
 import base.BaseTests;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-
-import static reader.ReadDataFromJson.dataModel;
 
 public class TestStock3TimeInvalidPaid extends BaseTests {
     @Test
@@ -38,28 +37,7 @@ public class TestStock3TimeInvalidPaid extends BaseTests {
 
         checkout.selectOnlineOption();
         var payForm = checkout.submitOnlineOrder();
-        // first time
-        payForm.fillPaymobForm (dataModel().paymobForm.numberCard ,dataModel().paymobForm.expiryCard ,dataModel().paymobForm.cvcCard,
-                dataModel().paymobForm.nameCard);
-        payForm.clickPayButton();
-        payForm.selectAuthenticationInvalid();
-        payForm.clicksumbitButton();
-        payForm.clickTryAgain();
-        // second time
-        payForm.fillPaymobForm (dataModel().paymobForm.numberCard ,dataModel().paymobForm.expiryCard ,dataModel().paymobForm.cvcCard,
-                dataModel().paymobForm.nameCard);
-        payForm.clickPayButton();
-        payForm.selectAuthenticationInvalid();
-        payForm.clicksumbitButton();
-        payForm.clickTryAgain();
-        // third time
-        payForm.fillPaymobForm (dataModel().paymobForm.numberCard ,dataModel().paymobForm.expiryCard ,dataModel().paymobForm.cvcCard,
-                dataModel().paymobForm.nameCard);
-        payForm.clickPayButton();
-        payForm.selectAuthenticationInvalid();
-        payForm.clicksumbitButton();
-        Assert.assertTrue(payForm.faildMessage());
-
+        method.completeFailedOnlinePayment(payForm);
 
         // close new tab
         closeTab();

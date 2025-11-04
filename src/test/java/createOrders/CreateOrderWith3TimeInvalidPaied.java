@@ -6,15 +6,12 @@ import org.testng.annotations.Test;
 
 import java.io.FileNotFoundException;
 
-import static reader.ReadDataFromJson.dataModel;
-
 public class CreateOrderWith3TimeInvalidPaied extends BaseTests {
 
     String  orderID = "";
     @Test
     public void createUnpaidOrder3Time() throws InterruptedException, FileNotFoundException {
         method.login();
-
         homePage.checkLocation();
         homePage.openCategoryPage();
         homePage.addProductToCart();
@@ -22,27 +19,7 @@ public class CreateOrderWith3TimeInvalidPaied extends BaseTests {
         var checkout = cartPage.openCheckoutPage();
         checkout.selectOnlineOption();
         var payForm = checkout.submitOnlineOrder();
-      // first time
-        payForm.fillPaymobForm (dataModel().paymobForm.numberCard ,dataModel().paymobForm.expiryCard ,dataModel().paymobForm.cvcCard,
-                dataModel().paymobForm.nameCard);
-        payForm.clickPayButton();
-        payForm.selectAuthenticationInvalid();
-        payForm.clicksumbitButton();
-        payForm.clickTryAgain();
-        // second time
-        payForm.fillPaymobForm (dataModel().paymobForm.numberCard ,dataModel().paymobForm.expiryCard ,dataModel().paymobForm.cvcCard,
-                dataModel().paymobForm.nameCard);
-        payForm.clickPayButton();
-        payForm.selectAuthenticationInvalid();
-        payForm.clicksumbitButton();
-        payForm.clickTryAgain();
-        // third time
-        payForm.fillPaymobForm (dataModel().paymobForm.numberCard ,dataModel().paymobForm.expiryCard ,dataModel().paymobForm.cvcCard,
-                dataModel().paymobForm.nameCard);
-        payForm.clickPayButton();
-        payForm.selectAuthenticationInvalid();
-        payForm.clicksumbitButton();
-        Assert.assertTrue(payForm.faildMessage());
+        method.completeFailedOnlinePayment(payForm);
         String orderURL = payForm.getCurrentURL();
         orderID = payForm.extractOrderIDFromURL(orderURL);
         System.out.println(orderID);

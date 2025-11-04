@@ -5,8 +5,6 @@ import org.testng.annotations.Test;
 
 import java.io.FileNotFoundException;
 
-import static reader.ReadDataFromJson.dataModel;
-
 public class UncompletedOnlinePaymentTest extends BaseTests {
     @Test
     public void createUnpaidOrder() throws InterruptedException, FileNotFoundException {
@@ -18,8 +16,6 @@ public class UncompletedOnlinePaymentTest extends BaseTests {
         var checkout = cartPage.openCheckoutPage();
         checkout.selectOnlineOption();
         var payForm = checkout.submitOnlineOrder();
-        payForm.fillPaymobForm(dataModel().paymobForm.numberCard, dataModel().paymobForm.expiryCard, dataModel().paymobForm.cvcCard,
-                dataModel().paymobForm.nameCard);
     }
 
 

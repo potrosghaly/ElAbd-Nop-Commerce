@@ -4,8 +4,6 @@ import base.BaseTests;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import static reader.ReadDataFromJson.dataModel;
-
 public class TestStockOnlineOrderDeliverd extends BaseTests {
     @Test
     public void testStockAfterDeliverdOnlineOrder() throws Exception {
@@ -45,11 +43,7 @@ public class TestStockOnlineOrderDeliverd extends BaseTests {
 
         checkout.selectOnlineOption();
         var payForm = checkout.submitOnlineOrder();
-        payForm.fillPaymobForm(dataModel().paymobForm.numberCard, dataModel().paymobForm.expiryCard, dataModel().paymobForm.cvcCard,
-                dataModel().paymobForm.nameCard);
-        payForm.clickPayButton();
-        payForm.clicksumbitButton();
-        Assert.assertTrue(payForm.thankYouMessage());
+        method.completeSuccessOnlinePayment(payForm);
         // close new tab
         closeTab();
         // back to product tab
