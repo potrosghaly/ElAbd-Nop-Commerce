@@ -20,7 +20,7 @@ import static reader.ReadDataFromJson.dataModel;
 
 public class BaseTests {
 
-    WebDriver driver;
+    protected WebDriver driver;
     protected HomePage homePage;
     UtilsTests utilsTests;
 

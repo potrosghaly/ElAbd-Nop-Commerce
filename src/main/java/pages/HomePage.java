@@ -32,6 +32,8 @@ public class HomePage extends MethodHandles {
     private final By loadingIcon = By.xpath("//div[@class='loading-image']");
     private final By categoryButton = By.xpath("//ul[@class='nav navbar-nav']/li[" + categorySort + "]/a");
     private final By adminPage = By.xpath("//*[@class='administration']");
+    //private final By productLocator = By.xpath("//div[@data-productid='" + productID + "']");
+
     private final By location = By.xpath("//*[contains(text() , 'وسط البلد')]");
     private final By autoLocation = By.xpath("//*[contains(text() , 'Auto Location')]");
     private final By closePopup = By.xpath("//button[@class='popup-close']");
