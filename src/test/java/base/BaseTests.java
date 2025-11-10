@@ -50,16 +50,22 @@ public class BaseTests {
     public void setUpBrowser(String browser) {
         if (browser.equalsIgnoreCase("Chrome")) {
             ChromeOptions chromeOptions = new ChromeOptions();
-            // ✅ تفعيل الطباعة الصامتة بدون البوب أب
             chromeOptions.addArguments("--kiosk-printing");
             driver = new ChromeDriver(chromeOptions);
+            System.out.println("Chrome viewport size: " + driver.manage().window().getSize());
 
         } else if (browser.equalsIgnoreCase("firefox")) {
             driver = new FirefoxDriver();
         } else if (browser.equalsIgnoreCase("headlessChrome")) {
             chromeOptions = new ChromeOptions();
-            chromeOptions.addArguments("--headless");
+            chromeOptions.addArguments("--headless=new");
+            chromeOptions.addArguments("--window-size=1920,1080");
+            chromeOptions.addArguments("--start-maximized");
             driver = new ChromeDriver(chromeOptions);
+
+            driver.manage().window().setSize(new Dimension(1051, 798));
+            System.out.println("Headless Chrome viewport size: " + driver.manage().window().getSize());
+
         } else if (browser.equalsIgnoreCase("headlessFirefox")) {
             firefoxOptions = new FirefoxOptions();
             firefoxOptions.addArguments("--headless");
