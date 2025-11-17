@@ -50,6 +50,8 @@ public class TestStockOnlineOrderCanceled extends BaseTests {
         payForm.clickPayButton();
         payForm.clicksumbitButton();
         Assert.assertTrue(payForm.thankYouMessage());
+        String orderID = method.extractOrderIDFromURL(driver.getCurrentUrl());
+
         // close new tab
         closeTab();
         // back to product tab
@@ -72,9 +74,7 @@ public class TestStockOnlineOrderCanceled extends BaseTests {
 
         admin = homePage.openAdmin();
         var salePage = admin.openSalesPage();
-        salePage.resestFilter();
-        salePage.clickSearchButton();
-        var productPage = salePage.openFirstOrder();
+        var productPage = salePage.searchByOrderID(orderID);
         productPage.clickCancelButton();
 
         // close new tab

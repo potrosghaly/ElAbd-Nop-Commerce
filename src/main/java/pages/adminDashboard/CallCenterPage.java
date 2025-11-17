@@ -112,5 +112,9 @@ public class CallCenterPage extends MethodHandles {
         selectByValue(hubDropdoun, 30, "10");
     }
 
-
+    public String getOrderID()
+    {
+        WebElement alert = driver.findElement(successOrderAlert);
+        return alert.getText();
+    }
 }

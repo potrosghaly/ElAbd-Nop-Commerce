@@ -41,6 +41,8 @@ public class TestStockCashonDeliveryCancel extends BaseTests {
         checkout.selectCashOption();
         checkout.submitCashOrder();
         Assert.assertTrue(checkout.thankYouMessage());
+        Assert.assertTrue(checkout.thankYouMessage());
+        String orderID = method.extractOrderIDFromURL(driver.getCurrentUrl());
         // close new tab
         closeTab();
 

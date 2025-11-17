@@ -14,7 +14,6 @@ public class CreateOrderByCallCenterTest extends BaseTests {
     public void createCallCenterOrderAsDelivered() throws FileNotFoundException, InterruptedException {
         method.login();
         var admin = homePage.openAdmin();
-
         // open call center and create order
         var callCenter = admin.openCallCenterPage();
         callCenter.searchByPhoneNumber(dataModel().phone);
@@ -24,11 +23,9 @@ public class CreateOrderByCallCenterTest extends BaseTests {
         callCenter.submitOrder();
         //callCenter.cleanCart();
         Assert.assertTrue(callCenter.successOrderAlertIsAppear());
-
+        String orderID = method.extractOrderIDFromText(callCenter.getOrderID());
         var salePage = admin.openSalesPage();
-        salePage.resestFilter();
-        salePage.clickSearchButton();
-        var productPage = salePage.openFirstOrder();
+        var productPage = salePage.searchByOrderID(orderID);
         Assert.assertTrue(productPage.pendingStatusIsAppear());
         productPage.clickPreparingButton();
         productPage.closeTab(2);
@@ -40,9 +37,8 @@ public class CreateOrderByCallCenterTest extends BaseTests {
 
     @Test(dependsOnMethods = "createCallCenterOrderAsDelivered")
     public void createCallCenterOrderAsCancel() throws FileNotFoundException {
-
-
         // open call center and create order
+       // method.login();
         var admin =homePage.openAdmin();
         var callCenter = admin.openCallCenterPage();
         callCenter.searchByPhoneNumber(dataModel().phone);
@@ -52,11 +48,9 @@ public class CreateOrderByCallCenterTest extends BaseTests {
         callCenter.submitOrder();
         //callCenter.cleanCart();
         Assert.assertTrue(callCenter.successOrderAlertIsAppear());
-
+        String orderID = method.extractOrderIDFromText(callCenter.getOrderID());
         var salePage = admin.openSalesPage();
-        salePage.resestFilter();
-        salePage.clickSearchButton();
-        var productPage = salePage.openFirstOrder();
+        var productPage = salePage.searchByOrderID(orderID);
         Assert.assertTrue(productPage.pendingStatusIsAppear());
         productPage.clickCancelButton();
         Assert.assertTrue(productPage.cancelStatusIsAppear());

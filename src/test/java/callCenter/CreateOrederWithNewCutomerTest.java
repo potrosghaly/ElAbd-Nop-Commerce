@@ -47,12 +47,9 @@ public class CreateOrederWithNewCutomerTest extends BaseTests {
         callCenter.submitOrder();
         //callCenter.cleanCart();
         Assert.assertTrue(callCenter.successOrderAlertIsAppear());
-
-
+        String orderID = method.extractOrderIDFromText(callCenter.getOrderID());
         var salePage = admin.openSalesPage();
-        salePage.resestFilter();
-        salePage.clickResetAndSearchButton();
-        var productPage = salePage.openFirstOrder();
+        var productPage = salePage.searchByOrderID(orderID);
         productPage.clickPreparingButton();
         productPage.closeTab(2);
         productPage.clickOnWayButton();

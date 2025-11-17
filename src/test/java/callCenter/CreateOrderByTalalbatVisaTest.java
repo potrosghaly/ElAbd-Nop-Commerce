@@ -24,11 +24,9 @@ public class CreateOrderByTalalbatVisaTest extends BaseTests {
         callCenter.submitOrder();
         //callCenter.cleanCart();
         Assert.assertTrue(callCenter.successOrderAlertIsAppear());
-
+        String orderID = method.extractOrderIDFromText(callCenter.getOrderID());
         var salePage = admin.openSalesPage();
-        salePage.resestFilter();
-        salePage.clickSearchButton();
-        var productPage = salePage.openFirstOrder();
+        var productPage = salePage.searchByOrderID(orderID);
         Assert.assertTrue(productPage.paidStatusIsAppear());
         productPage.clickPreparingButton();
         productPage.closeTab(2);
@@ -51,11 +49,9 @@ public class CreateOrderByTalalbatVisaTest extends BaseTests {
         callCenter.submitOrder();
         //callCenter.cleanCart();
         Assert.assertTrue(callCenter.successOrderAlertIsAppear());
-
+        String orderID = method.extractOrderIDFromText(callCenter.getOrderID());
         var salePage = admin.openSalesPage();
-        salePage.resestFilter();
-        salePage.clickSearchButton();
-        var productPage = salePage.openFirstOrder();
+        var productPage = salePage.searchByOrderID(orderID);
         Assert.assertTrue(productPage.paidStatusIsAppear());
         productPage.clickCancelButton();
         Assert.assertTrue(productPage.cancelStatusIsAppear());

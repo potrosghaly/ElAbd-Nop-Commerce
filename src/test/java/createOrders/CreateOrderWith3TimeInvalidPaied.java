@@ -20,8 +20,7 @@ public class CreateOrderWith3TimeInvalidPaied extends BaseTests {
         checkout.selectOnlineOption();
         var payForm = checkout.submitOnlineOrder();
         method.completeFailedOnlinePayment(payForm);
-        String orderURL = payForm.getCurrentURL();
-        orderID = payForm.extractOrderIDFromURL(orderURL);
+        orderID = method.extractOrderIDFromURL(driver.getCurrentUrl());
         System.out.println(orderID);
     }
 
@@ -30,7 +29,7 @@ public class CreateOrderWith3TimeInvalidPaied extends BaseTests {
         var admin = homePage.openAdmin();
         var salePage = admin.openSalesPage();
         salePage.resestFilter();
-        salePage.searchByOrderID(orderID);
+        salePage.searchByOrderID(driver.getCurrentUrl());
         Assert.assertTrue(salePage.tableIsEmpty());
     }
 

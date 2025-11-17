@@ -16,7 +16,7 @@ public class AdminPage extends MethodHandles {
     private final By loadingIcon = By.xpath("//div[@id='ajaxBusy']//span");
     private final By callCenterIcon = By.xpath("//a[@href='/Admin/CustomerService']");
     private final By customerDropdownIcon = By.xpath("//i[@class='nav-icon far fa-user']");
-    private final By cutomerButton = By.xpath("//a[@href='/Admin/Customer/List']");
+    private final By customerButton = By.xpath("//a[@href='/Admin/Customer/List']");
     private final By catalogDropdown = By.xpath("//i[@class='nav-icon fas fa-book']");
     private final By productButton = By.xpath("//a[@href='/Admin/Product/List']");
 
@@ -39,8 +39,8 @@ public class AdminPage extends MethodHandles {
     public CustomerPage openCustomerPage() {
         hover(customerDropdownIcon, 30);
         click(customerDropdownIcon, 10);
-        visiblityOfElement(cutomerButton, 10);
-        click(cutomerButton, 10);
+        visiblityOfElement(customerButton, 10);
+        click(customerButton, 10);
         invisibilityOf(loadingIcon, 30);
         return new CustomerPage(driver);
     }

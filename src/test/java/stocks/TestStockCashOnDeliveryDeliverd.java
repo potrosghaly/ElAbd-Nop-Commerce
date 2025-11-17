@@ -38,6 +38,7 @@ public class TestStockCashOnDeliveryDeliverd extends BaseTests {
         checkout.selectCashOption();
         checkout.submitCashOrder();
         Assert.assertTrue(checkout.thankYouMessage());
+        String orderID = method.extractOrderIDFromURL(driver.getCurrentUrl());
         // close new tab
         closeTab();
         // back to product tab
@@ -59,9 +60,7 @@ public class TestStockCashOnDeliveryDeliverd extends BaseTests {
 
         admin = homePage.openAdmin();
         var salePage = admin.openSalesPage();
-        salePage.resestFilter();
-        salePage.clickSearchButton();
-        var productPage = salePage.openFirstOrder();
+        var productPage = salePage.searchByOrderID(orderID);
         productPage.clickPreparingButton();
         productPage.closeTab(3);
         productPage.clickOnWayButton();

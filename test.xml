@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Parallel Execution Suite" >
+<suite name="Parallel Execution Suite" parallel="classes" thread-count="4">
     <test name="Parallel Test">
         <classes>
-            <class name="stocks.TestStock3TimeInvalidPaid"> </class>
-            <class name="stocks.TestStockOnHoldOrders"> </class>
+            <class name="createOrders.CreateCashOrdersTest" />
+            <class name="callCenter.TryAddCurrentUserAtCustomerServiceTest" />
+            <class name="createOrders.CreateOrderAsGuestUserTest" />
+            <class name="GuestUser.addProductToCartAsGuestTest" />
+
         </classes>
     </test>
 </suite>

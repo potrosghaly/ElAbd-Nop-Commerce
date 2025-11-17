@@ -44,6 +44,8 @@ public class TestStockOnlineOrderDeliverd extends BaseTests {
         checkout.selectOnlineOption();
         var payForm = checkout.submitOnlineOrder();
         method.completeSuccessOnlinePayment(payForm);
+        Assert.assertTrue(payForm.thankYouMessage());
+        String orderID = method.extractOrderIDFromURL(driver.getCurrentUrl());
         // close new tab
         closeTab();
         // back to product tab
@@ -66,9 +68,7 @@ public class TestStockOnlineOrderDeliverd extends BaseTests {
 
         admin = homePage.openAdmin();
         var salePage = admin.openSalesPage();
-        salePage.resestFilter();
-        salePage.clickSearchButton();
-        var productPage = salePage.openFirstOrder();
+        var productPage = salePage.searchByOrderID(orderID);
         productPage.clickPreparingButton();
         productPage.closeTab(3);
         productPage.clickOnWayButton();

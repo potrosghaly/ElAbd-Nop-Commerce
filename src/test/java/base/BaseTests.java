@@ -52,8 +52,6 @@ public class BaseTests {
             ChromeOptions chromeOptions = new ChromeOptions();
             chromeOptions.addArguments("--kiosk-printing");
             driver = new ChromeDriver(chromeOptions);
-            System.out.println("Chrome viewport size: " + driver.manage().window().getSize());
-
         } else if (browser.equalsIgnoreCase("firefox")) {
             driver = new FirefoxDriver();
         } else if (browser.equalsIgnoreCase("headlessChrome")) {
@@ -62,8 +60,6 @@ public class BaseTests {
             chromeOptions.addArguments("--window-size=1920,1080");
             chromeOptions.addArguments("--start-maximized");
             driver = new ChromeDriver(chromeOptions);
-
-            driver.manage().window().setSize(new Dimension(1051, 798));
             System.out.println("Headless Chrome viewport size: " + driver.manage().window().getSize());
 
         } else if (browser.equalsIgnoreCase("headlessFirefox")) {
@@ -123,8 +119,6 @@ public class BaseTests {
     public void sleepPerMinutes(int minutes) throws InterruptedException {
         Thread.sleep(1000L * minutes * 60);
     }
-
-
 
     public String saveTab() {
         return driver.getWindowHandle();

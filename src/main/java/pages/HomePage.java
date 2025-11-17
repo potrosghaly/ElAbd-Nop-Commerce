@@ -43,6 +43,9 @@ public class HomePage extends MethodHandles {
 
     private final By submitSearchIcon = By.xpath("//button[@type='submit']//i[@class='fas fa-search']");
     private final By searchField = By.id("small-searchterms");
+    private final By confirmNewLocation = By.id("confirm-location");
+    private final By manualLocationText = By.cssSelector("p.location-word[title='Manual']");
+
 
 
     public LoginPage clickLoginIcon() {
@@ -182,6 +185,8 @@ public class HomePage extends MethodHandles {
     private static final By editAddressButton = By.cssSelector("body > div:nth-child(8) > div:nth-child(4) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(3) > button:nth-child(1)");
     private static final By markAsDefaultCheckbox = By.id("Address_IsDefaultAddress");
     private static final By saveButton = By.cssSelector("button[class='btn btn-primary save-address-button']");
+    private static final By mapSearchField = By.xpath("//input[@placeholder='بحث']");
+
 
 
     public void checkLocation() {
@@ -227,5 +232,14 @@ public class HomePage extends MethodHandles {
         return new TestPage(driver);
     }
 
+    public void selectNewLocationAsGuest(String newLocation)
+    {
+        visiblityOfElement(mapSearchField , 30);
+        click(mapSearchField , 30);
+        sendKeys(mapSearchField , newLocation , 30);
+        enter();
+        click(confirmNewLocation , 30);
+        visiblityOfElement(manualLocationText , 50);
+    }
 
 }

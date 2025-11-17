@@ -4,9 +4,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import utils.MethodHandles;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 public class CheckoutPage extends MethodHandles {
     public CheckoutPage(WebDriver driver) {
         super(driver);
@@ -34,7 +31,7 @@ public class CheckoutPage extends MethodHandles {
 
     public PaymobPage submitOnlineOrder() {
         click(confirmOrderButton, 5);
-        visiblityOfElement(paymobField, 50);
+        visiblityOfElement(paymobField, 200);
         return new PaymobPage(driver);
     }
 

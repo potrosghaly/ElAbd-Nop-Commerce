@@ -20,13 +20,12 @@ public class CreateCashOrdersTest extends BaseTests {
         checkout.selectCashOption();
         checkout.submitCashOrder();
         Assert.assertTrue(checkout.thankYouMessage());
+        String orderID = method.extractOrderIDFromURL(driver.getCurrentUrl());
 
         // mark as paid and delivered
         var admin = homePage.openAdmin();
         var salePage = admin.openSalesPage();
-        salePage.resestFilter();
-        salePage.clickSearchButton();
-        var productPage = salePage.openFirstOrder();
+        var productPage = salePage.searchByOrderID(orderID);
         Assert.assertTrue(productPage.pendingStatusIsAppear());
         productPage.clickPreparingButton();
         productPage.closeTab(2);
@@ -46,12 +45,10 @@ public class CreateCashOrdersTest extends BaseTests {
         checkout.selectCashOption();
         checkout.submitCashOrder();
         Assert.assertTrue(checkout.thankYouMessage());
-
+        String orderID = method.extractOrderIDFromURL(driver.getCurrentUrl());
         var admin = homePage.openAdmin();
         var salePage = admin.openSalesPage();
-        salePage.resestFilter();
-        salePage.clickSearchButton();
-        var productPage = salePage.openFirstOrder();
+        var productPage = salePage.searchByOrderID(orderID);
         Assert.assertTrue(productPage.pendingStatusIsAppear());
         productPage.clickCancelButton();
         Assert.assertTrue(productPage.cancelStatusIsAppear());

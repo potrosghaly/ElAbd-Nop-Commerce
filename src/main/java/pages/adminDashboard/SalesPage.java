@@ -15,6 +15,7 @@ public class SalesPage extends MethodHandles {
     private final By ViewButton = By.xpath("//tbody/tr[1]/td[15]/a[1]");
     private final By phoneNumberField = By.id("BillingPhone");
     private final By orderIDField = By.id("GoDirectlyToCustomOrderNumber");
+    private final By goToOrderButton = By.id("go-to-order-by-number");
     private final By emptyTable = By.cssSelector(".dataTables_empty");
 
 
