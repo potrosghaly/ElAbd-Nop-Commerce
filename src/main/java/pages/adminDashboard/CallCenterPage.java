@@ -106,8 +106,6 @@ public class CallCenterPage extends MethodHandles {
         return isDisplayed(isAlreadyExisting, 30);
     }
 
-    ;
-
     public void selectHub() {
         selectByValue(hubDropdoun, 30, "10");
     }

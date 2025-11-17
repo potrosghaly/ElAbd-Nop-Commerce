@@ -26,19 +26,24 @@ public class SalesPage extends MethodHandles {
     }
 
 
-    public void searchByOrderID(String orderID) {
-        clear(phoneNumberField, 30);
+    public OrderDetailsPage searchByOrderID(String orderID) {
         clear(orderIDField , 30);
         sendKeys(orderIDField , orderID , 30);
+        click(goToOrderButton, 30);
+        invisibilityOf(loadingIcon, 30);
+        return new OrderDetailsPage(driver);
+    }
+
+
+
+    public void clickSearchButton() {
         click(searchButton, 30);
         invisibilityOf(loadingIcon, 30);
     }
 
-    public void clickSearchButton() {
+    public void searchByPhone() {
         clear(phoneNumberField, 30);
         sendKeys(phoneNumberField, "01271331374", 30);
-        click(searchButton, 30);
-        invisibilityOf(loadingIcon, 30);
     }
 
     public void clickResetAndSearchButton() {

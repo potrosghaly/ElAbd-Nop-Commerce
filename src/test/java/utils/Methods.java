@@ -58,4 +58,27 @@ public class Methods extends BaseTests {
         Assert.assertTrue(payForm.faildMessage());
     }
 
+    public String extractOrderIDFromURL(String url) {
+        Pattern pattern = Pattern.compile("/completed/(\\d+)");
+        Matcher matcher = pattern.matcher(url);
+        if (matcher.find()) {
+            return matcher.group(1); // Group 1 contains the captured digits
+        } else {
+            throw new IllegalArgumentException("No order ID found in the URL.");
+        }
+    }
+    public String extractOrderIDFromText(String fullText) {
+        String regex = "\\d+";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(fullText);
+
+        if (matcher.find()) {
+            return matcher.group();
+        } else {
+            throw new IllegalArgumentException("No order ID found in the URL.");
+        }
+    }
+
+
+
 }

@@ -67,9 +67,7 @@ public class TestStockCashonDeliveryCancel extends BaseTests {
 
         admin = homePage.openAdmin();
         var salePage = admin.openSalesPage();
-        salePage.resestFilter();
-        salePage.clickSearchButton();
-        var productPage = salePage.openFirstOrder();
+        var productPage = salePage.searchByOrderID(orderID);
         productPage.clickCancelButton();
 
         // close new tab
