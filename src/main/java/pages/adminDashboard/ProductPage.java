@@ -23,15 +23,24 @@ public class ProductPage extends MethodHandles {
     private final By publishedIdDropdown = By.id("SearchPublishedId");
     private final By searchButton = By.id("search-products");
     private final By productNameField = By.id("Name");
+    private final By productNameFilter = By.id("SearchProductName");
+
     private final By resetButton = By.xpath("//a[normalize-space()='Reset filter']");
 
     public By editButton = By.xpath("//tbody/tr[" + numberOfRow + "]/td[13]/a[1]");
     public By publicStoreButton = By.linkText("Public store");
 
 
+
     public void resetFilter() {
         visiblityOfElement(resetButton, 30);
         click(resetButton, 20);
+    }
+
+    public void openProductDetailPageByRow(String numberOfRow) {
+        By editButtonByRow = By.xpath("//tbody/tr[" + numberOfRow + "]/td[13]/a[1]");
+        visiblityOfElement(editButtonByRow, 30);
+        click(editButtonByRow, 20);
     }
 
     public void selectHub() {
@@ -42,6 +51,11 @@ public class ProductPage extends MethodHandles {
     public void selectPublished() {
         visiblityOfElement(publishedIdDropdown, 30);
         selectByVisibleText(publishedIdDropdown, 60, "Published only");
+    }
+
+    public void writeProductName(String productName) {
+        visiblityOfElement(productNameFilter, 30);
+        sendKeys(productNameFilter , productName , 30);
     }
 
     public void submitFilter() {
@@ -125,5 +139,10 @@ public class ProductPage extends MethodHandles {
         return new HomePage(driver);
     }
 
+    public void openProductDetailsByID(int productID)
+    {
+        driver.get("https://online-store-dotnet5-dev.azurewebsites.net/Admin/Product/Edit/" +productID);
+        invisibilityOf(loadingIcon, 30);
+    }
 
 }

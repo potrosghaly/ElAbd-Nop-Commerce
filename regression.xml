@@ -3,11 +3,11 @@
 <suite name="Regression Test Suite">
     <test name="Chrome">
         <classes>
-            <class name="GuestUser.addProductToCartAsGuestTest"> </class>
+            <class name="guestUser.addProductToCartAsGuestTest"> </class>
+            <class name="guestUser.CreateOrderAsGuestUserTest"> </class>
 
             <class name="createOrders.CreateCashOrdersTest"> </class>
             <class name="createOrders.CreateOnlinePaymentTest"> </class>
-            <class name="createOrders.CreateOrderAsGuestUserTest"> </class>
             <class name="createOrders.CreateOrderWith3TimeInvalidPaied"> </class>
             <class name="createOrders.UncompletedOnlinePaymentTest"> </class>
 

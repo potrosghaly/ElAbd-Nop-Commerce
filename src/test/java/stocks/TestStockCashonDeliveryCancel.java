@@ -9,7 +9,6 @@ public class TestStockCashonDeliveryCancel extends BaseTests {
     @Test(priority = 2)
     public void testStockAfterCancelCashOnDelivery() throws Exception {
 
-        var login = homePage.clickLoginIcon();
         method.login();
         homePage.checkLocation();
 
@@ -40,7 +39,6 @@ public class TestStockCashonDeliveryCancel extends BaseTests {
         var checkout = cartPage.openCheckoutPage();
         checkout.selectCashOption();
         checkout.submitCashOrder();
-        Assert.assertTrue(checkout.thankYouMessage());
         Assert.assertTrue(checkout.thankYouMessage());
         String orderID = method.extractOrderIDFromURL(driver.getCurrentUrl());
         // close new tab

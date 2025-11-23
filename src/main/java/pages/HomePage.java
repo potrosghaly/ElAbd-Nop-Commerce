@@ -7,6 +7,7 @@ import org.openqa.selenium.WebElement;
 import pages.adminDashboard.AdminPage;
 import pages.users.CartPage;
 import pages.users.LoginPage;
+import pages.users.ValuePackPage;
 import utils.MethodHandles;
 
 import java.util.Objects;
@@ -44,7 +45,11 @@ public class HomePage extends MethodHandles {
     private final By submitSearchIcon = By.xpath("//button[@type='submit']//i[@class='fas fa-search']");
     private final By searchField = By.id("small-searchterms");
     private final By confirmNewLocation = By.id("confirm-location");
+    private final By errorBanner = By.id("error-banner");
+    private final By canNotAddToCart = By.cssSelector(".content");
     private final By manualLocationText = By.cssSelector("p.location-word[title='Manual']");
+    private final By valuePackCategory = By.xpath("//ul[@class='nav navbar-nav']/li[" + "1" + "]/a");
+
 
 
 
@@ -54,6 +59,10 @@ public class HomePage extends MethodHandles {
         return new LoginPage(driver);
     }
 
+    public Boolean errorBannerWillAppear()
+    {
+        return isDisplayed(canNotAddToCart , 30);
+    }
     public LoginPage clickLoginIconWithoutLocation() {
 
         click(loginIcon, 5);
@@ -240,6 +249,13 @@ public class HomePage extends MethodHandles {
         enter();
         click(confirmNewLocation , 30);
         visiblityOfElement(manualLocationText , 50);
+    }
+
+    public ValuePackPage openValuePackPage()
+    {
+        visiblityOfElement(valuePackCategory , 50);
+        click(valuePackCategory , 30);
+        return new ValuePackPage(driver);
     }
 
 }

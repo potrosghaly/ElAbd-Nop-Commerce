@@ -129,6 +129,14 @@ public class BaseTests {
         List<String> tabs = new ArrayList<>(driver.getWindowHandles());
         driver.switchTo().window(tabs.get(1));
     }
+
+    public void openNewTab(int index) {
+        ((JavascriptExecutor) driver).executeScript("window.open();");
+        List<String> tabs = new ArrayList<>(driver.getWindowHandles());
+        driver.switchTo().window(tabs.get(index));
+    }
+
+
     public void backToTab(String tabName) {
         driver.switchTo().window(tabName);
     }

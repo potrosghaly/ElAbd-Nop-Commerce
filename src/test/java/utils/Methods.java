@@ -1,6 +1,9 @@
 package utils;
 
 import base.BaseTests;
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.NoAlertPresentException;
+import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import pages.HomePage;
 import pages.users.PaymobPage;
@@ -35,22 +38,23 @@ public class Methods extends BaseTests {
         payForm.clicksumbitButton();
         Assert.assertTrue(payForm.thankYouMessage());
     }
-    public void completeFailedOnlinePayment (PaymobPage payForm) throws FileNotFoundException {
-        payForm.fillPaymobForm (dataModel().paymobForm.numberCard ,dataModel().paymobForm.expiryCard ,dataModel().paymobForm.cvcCard,
+
+    public void completeFailedOnlinePayment(PaymobPage payForm) throws FileNotFoundException {
+        payForm.fillPaymobForm(dataModel().paymobForm.numberCard, dataModel().paymobForm.expiryCard, dataModel().paymobForm.cvcCard,
                 dataModel().paymobForm.nameCard);
         payForm.clickPayButton();
         payForm.selectAuthenticationInvalid();
         payForm.clicksumbitButton();
         payForm.clickTryAgain();
         // second time
-        payForm.fillPaymobForm (dataModel().paymobForm.numberCard ,dataModel().paymobForm.expiryCard ,dataModel().paymobForm.cvcCard,
+        payForm.fillPaymobForm(dataModel().paymobForm.numberCard, dataModel().paymobForm.expiryCard, dataModel().paymobForm.cvcCard,
                 dataModel().paymobForm.nameCard);
         payForm.clickPayButton();
         payForm.selectAuthenticationInvalid();
         payForm.clicksumbitButton();
         payForm.clickTryAgain();
         // third time
-        payForm.fillPaymobForm (dataModel().paymobForm.numberCard ,dataModel().paymobForm.expiryCard ,dataModel().paymobForm.cvcCard,
+        payForm.fillPaymobForm(dataModel().paymobForm.numberCard, dataModel().paymobForm.expiryCard, dataModel().paymobForm.cvcCard,
                 dataModel().paymobForm.nameCard);
         payForm.clickPayButton();
         payForm.selectAuthenticationInvalid();
@@ -67,6 +71,7 @@ public class Methods extends BaseTests {
             throw new IllegalArgumentException("No order ID found in the URL.");
         }
     }
+
     public String extractOrderIDFromText(String fullText) {
         String regex = "\\d+";
         Pattern pattern = Pattern.compile(regex);
@@ -79,6 +84,23 @@ public class Methods extends BaseTests {
         }
     }
 
+    public void handleAlerts(WebDriver driver) {
+        boolean alertPresent = true;
+
+        while (alertPresent) {
+            try {
+                Alert alert = driver.switchTo().alert();
+                System.out.println("Alert found: " + alert.getText());
+                alert.accept();   // اضغط OK
+                sleepPerSeconds(3);// انتظار بسيط لتظهر alerts الأخرى
+            } catch (NoAlertPresentException e) {
+                alertPresent = false; // مفيش Alerts تاني
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 
 
 }
+
