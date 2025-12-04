@@ -12,7 +12,7 @@ public class TestStockOnHoldOrders extends BaseTests {
     public void testStockAfterCanceledOnlineOrder() throws Exception {
 
         method.login();
-        //homePage.checkLocation();
+        homePage.checkLocation();
         var admin = homePage.openAdmin();
         var product = admin.openProductPage();
         product.resetFilter();

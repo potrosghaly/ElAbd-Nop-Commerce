@@ -4,7 +4,7 @@ import base.BaseTests;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class TestStockValuePacks extends BaseTests {
+public class TestStockValuePacksAfterDelivered extends BaseTests {
 
     String mainProduct = "عبوه اقتصادية 3 قطعه مخبوزات اونلاين";
     String attributeProduct = "دانش فواكه";
@@ -90,7 +90,7 @@ public class TestStockValuePacks extends BaseTests {
         Assert.assertEquals(oldStockMain, newStockMain);
         Assert.assertEquals(oldReservedMain, newReservedMain);
 
-        openNewTab(3);
+        openNewTab(2);
         goHomePage();
         admin = homePage.openAdmin();
         var salePage = admin.openSalesPage();

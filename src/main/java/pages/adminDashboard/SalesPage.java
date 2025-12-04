@@ -34,6 +34,10 @@ public class SalesPage extends MethodHandles {
         return new OrderDetailsPage(driver);
     }
 
+    public void writeOrderID(String orderID) {
+        clear(orderIDField , 30);
+        sendKeys(orderIDField , orderID , 30);
+    }
 
 
     public void clickSearchButton() {
@@ -46,10 +50,7 @@ public class SalesPage extends MethodHandles {
         sendKeys(phoneNumberField, "01271331374", 30);
     }
 
-    public void clickResetAndSearchButton() {
-        click(searchButton, 30);
-        invisibilityOf(loadingIcon, 30);
-    }
+
 
     public OrderDetailsPage openFirstOrder() {
         click(ViewButton, 30);

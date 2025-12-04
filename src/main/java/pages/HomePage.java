@@ -199,7 +199,7 @@ public class HomePage extends MethodHandles {
 
 
     public void checkLocation() {
-        visiblityOfElement(locationName, 20);
+        visiblityOfElement(locationName, 100);
         String location = getText(locationName, 20);
         String actual = hubName;
         if (Objects.equals(location, actual))
@@ -257,5 +257,7 @@ public class HomePage extends MethodHandles {
         click(valuePackCategory , 30);
         return new ValuePackPage(driver);
     }
+
+
 
 }

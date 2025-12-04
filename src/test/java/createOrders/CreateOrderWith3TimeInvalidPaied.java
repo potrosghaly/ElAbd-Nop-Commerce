@@ -29,7 +29,8 @@ public class CreateOrderWith3TimeInvalidPaied extends BaseTests {
         var admin = homePage.openAdmin();
         var salePage = admin.openSalesPage();
         salePage.resestFilter();
-        salePage.searchByOrderID(driver.getCurrentUrl());
+        salePage.writeOrderID(orderID);
+        salePage.clickSearchButton();
         Assert.assertTrue(salePage.tableIsEmpty());
     }
 

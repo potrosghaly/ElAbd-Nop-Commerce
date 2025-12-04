@@ -8,7 +8,9 @@
             <class name="stocks.TestStockOnlineOrderDeliverd"> </class>
             <class name="stocks.TestStockOnlineOrderCanceled"> </class>
             <class name="stocks.TestStock3TimeInvalidPaid"> </class>
-            <class name="stocks.TestStockOnHoldOrders"> </class>
+            <class name="stocks.TestStockValuePacksAfterDelivered"> </class>
+            <class name="stocks.TestStockValuePacksAfterCancelled"> </class>
+
 
         </classes>
     </test>
