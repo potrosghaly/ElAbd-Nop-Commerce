@@ -9,16 +9,20 @@ public class testtt extends BaseTests {
     @Test(priority = 1)
     public void createCashOrderAsDelivered() throws InterruptedException, FileNotFoundException {
         method.login();
-        var admin = homePage.openAdmin();
-        var salePage = admin.openSalesPage();
-        var productPage = salePage.openFirstOrder();
-        Assert.assertTrue(productPage.pendingStatusIsAppear());
-        productPage.clickPreparingButton();
-        productPage.closeTab(2);
-        productPage.clickOnWayButton();
+        var value = homePage.openValuePackPage();
+        value.addProductToCart();
+        value.addAttribute("3");
+        String expectAlertText = "The product has been added to your";
+        String actualAlertText = value.getAlertText();
+        Assert.assertTrue(actualAlertText.contains(expectAlertText));
+        var cartPage = homePage.openCartPage();
+        var checkout = cartPage.openCheckoutPage();
+        checkout.selectCashOption();
+        checkout.submitCashOrder();
+        Assert.assertTrue(checkout.thankYouMessage());
+        String orderID = method.extractOrderIDFromURL(driver.getCurrentUrl());
 
     }
-
 
 
 //    @Test
@@ -45,6 +49,21 @@ public class testtt extends BaseTests {
 //
 //    List<Integer> ID = Arrays.asList(1414986);
 
+
+    @Test
+    public void testAlert() throws FileNotFoundException {
+        method.login();
+        var admin =homePage.openAdmin();
+        var productPage = admin.openProductPage();
+        productPage.openProductDetailsByID(2807);
+        refreshPage();
+        productPage.getStocks();
+        System.out.println(productPage.getStock());
+
+
+
+
+    }
 
 }
 
